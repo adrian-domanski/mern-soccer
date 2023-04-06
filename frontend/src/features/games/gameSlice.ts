@@ -31,6 +31,20 @@ export const getGames = createAsyncThunk<Game[]>(
   }
 );
 
+export const getGameById = createAsyncThunk<Game, string>(
+  'games/getGameById',
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/api/games/game/${id}`
+      );
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const createGame = createAsyncThunk<Object, Game>(
   'games/createGame',
   async (game, thunkAPI) => {
@@ -57,6 +71,7 @@ export const gameSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // getGames
     builder.addCase(getGames.pending, (state) => {
       state.loading = true;
     });
@@ -65,6 +80,18 @@ export const gameSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(getGames.rejected, (state, action) => {
+      state.loading = false;
+      state.errors = action.payload;
+    });
+    // getGameById
+    builder.addCase(getGameById.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getGameById.fulfilled, (state, action) => {
+      state.singleGame = action.payload;
+      state.loading = false;
+    });
+    builder.addCase(getGameById.rejected, (state, action) => {
       state.loading = false;
       state.errors = action.payload;
     });
