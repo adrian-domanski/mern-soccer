@@ -1,10 +1,21 @@
 import { Request, Response } from 'express';
-import Game from '../../models/Game';
+import Game from '../models/Game';
 
 export const getAllGames = async (req: Request, res: Response) => {
   const games = await Game.find();
   try {
     res.status(200).json(games);
+  } catch (error) {
+    res.status(404).json({ error });
+  }
+};
+
+export const getGameById = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    const singleGame = await Game.findById(id);
+    res.status(200).json(singleGame);
   } catch (error) {
     res.status(404).json({ error });
   }
