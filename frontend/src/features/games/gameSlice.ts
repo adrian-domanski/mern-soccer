@@ -39,6 +39,7 @@ export const createGame = createAsyncThunk<Object, Game>(
         'http://localhost:3001/api/games',
         game
       );
+      thunkAPI.dispatch(getGames());
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -51,7 +52,7 @@ export const gameSlice = createSlice({
   name: 'games',
   initialState,
   reducers: {
-    setGames: (state: RootState, action: PayloadAction<Game[]>) => {
+    setGames: (state, action: PayloadAction<Game[]>) => {
       state.games = action.payload;
     },
   },
@@ -69,3 +70,6 @@ export const gameSlice = createSlice({
     });
   },
 });
+
+export default gameSlice.reducer;
+export const { setGames } = gameSlice.actions;
