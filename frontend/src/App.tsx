@@ -5,6 +5,7 @@ import { useCallback, useEffect } from 'react';
 import { getGames } from './features/games/gameSlice';
 import NavBar from './components/Layout/NavBar';
 import SingleGamePage from './features/games/SingleGamePage';
+import CreateGamePage from './features/games/CreateGamePage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path='/' element={<GamesPage />} />
         <Route path='/game/:id' element={<SingleGamePage />} />
+        <Route path='/create-game' element={<CreateGamePage />} />
       </Routes>
     </BrowserRouter>
   );

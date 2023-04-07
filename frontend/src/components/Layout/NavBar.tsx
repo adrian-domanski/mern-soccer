@@ -20,14 +20,14 @@ import './Navbar.styles.css';
 const pages = [
   { title: 'Home', route: '/' },
   { title: 'Games', route: '/games' },
-  { title: 'Add Game', route: '/createGame' },
+  { title: 'Add Game', route: '/create-game' },
   { title: 'Login', route: '/login' },
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout', 'Login'];
 
 const NavBar = () => {
   // const { isLoggedIn } = useAppSelector((state) => state.account);
-  const isLoggedIn = false;
+  const isLoggedIn = !false;
   const dispatch = useAppDispatch();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -109,7 +109,7 @@ const NavBar = () => {
                       Log Out
                     </Typography>
                   </MenuItem>
-                  <Link to='/creategame'>
+                  <Link to='/create-game'>
                     <MenuItem onClick={handleCloseNavMenu}>
                       <Typography fontWeight={600} textAlign='center'>
                         Create Game
@@ -154,7 +154,7 @@ const NavBar = () => {
             </Link>
             {isLoggedIn ? (
               <>
-                <Link to='/creategame'>
+                <Link to='/create-game'>
                   <Button
                     onClick={handleCloseNavMenu}
                     sx={{
