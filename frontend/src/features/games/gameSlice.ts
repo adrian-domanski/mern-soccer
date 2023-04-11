@@ -61,6 +61,37 @@ export const createGame = createAsyncThunk<Game, Object>(
   }
 );
 
+export const updateGame = createAsyncThunk<Game, Game>(
+  'games/updateGame',
+  async (game, thunkAPI) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:3001/api/games/game/${game._id}`,
+        game
+      );
+      thunkAPI.dispatch(getGames());
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const deleteGame = createAsyncThunk<Game, string>(
+  'games/deleteGame',
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3001/api/games/game/${id}`
+      );
+      thunkAPI.dispatch(getGames());
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 // reducers
 export const gameSlice = createSlice({
   name: 'games',
@@ -92,6 +123,39 @@ export const gameSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(getGameById.rejected, (state, action) => {
+      state.loading = false;
+      state.errors = action.payload;
+    });
+    // updateGame
+    builder.addCase(updateGame.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(updateGame.fulfilled, (state, action) => {
+      state.loading = false;
+    });
+    builder.addCase(updateGame.rejected, (state, action) => {
+      state.loading = false;
+      state.errors = action.payload;
+    });
+    // createGame
+    builder.addCase(createGame.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(createGame.fulfilled, (state, action) => {
+      state.loading = false;
+    });
+    builder.addCase(createGame.rejected, (state, action) => {
+      state.loading = false;
+      state.errors = action.payload;
+    });
+    // deleteGame
+    builder.addCase(deleteGame.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(deleteGame.fulfilled, (state, action) => {
+      state.loading = false;
+    });
+    builder.addCase(deleteGame.rejected, (state, action) => {
       state.loading = false;
       state.errors = action.payload;
     });

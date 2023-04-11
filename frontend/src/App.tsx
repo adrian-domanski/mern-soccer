@@ -6,6 +6,7 @@ import { getGames } from './features/games/gameSlice';
 import NavBar from './components/Layout/NavBar';
 import SingleGamePage from './features/games/SingleGamePage';
 import CreateGamePage from './features/games/CreateGamePage';
+import EditGamePage from './features/games/EditGamePage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ function App() {
         <Route path='/' element={<GamesPage />} />
         <Route path='/game/:id' element={<SingleGamePage />} />
         <Route path='/create-game' element={<CreateGamePage />} />
+        <Route path='/edit-game/:id' element={<EditGamePage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,26 +1,33 @@
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import { Game } from '../../interfaces/Game';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { createGame } from './gameSlice';
-import { useAppDispatch } from '../../store/store';
-import { useNavigate } from 'react-router-dom';
+import { deleteGame, filterGames, getGameById, updateGame } from './gameSlice';
+import { useAppDispatch, useAppSelector } from '../../store/store';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const CreateGamePage = () => {
+const EditGamePage = () => {
+  const { singleGame } = useAppSelector((state) => state.games);
   const initialGame = {
-    name: '',
-    address: '',
-    numberOfPeople: 0,
-    date: dayjs(new Date()),
-    time: '',
-    fieldNumber: 0,
+    name: singleGame?.name || '',
+    address: singleGame?.address || '',
+    numberOfPeople: singleGame?.numberOfPeople || 0,
+    date: dayjs(new Date(singleGame?.date || '')),
+    time: singleGame?.time || '',
+    fieldNumber: singleGame?.fieldNumber || 0,
   };
   const dispatch = useAppDispatch();
   const [game, setGame] = useState(initialGame);
+  const { id } = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (id && !singleGame) dispatch(getGameById(id));
+    if (singleGame) setGame(initialGame);
+  }, [id, singleGame]);
 
   const handleChange = ({
     target: { value, name, type },
@@ -48,11 +55,15 @@ const CreateGamePage = () => {
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    const newGame: Game = { ...game, date: game.date.toDate(), _id: id };
 
-    const newGame: Game = { ...game, date: game.date.toDate() };
+    dispatch(updateGame(newGame));
+  };
 
-    dispatch(createGame(newGame));
-    setGame(initialGame);
+  const handleDeleteGame = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!id) return alert('Invalid game id');
+    dispatch(deleteGame(id));
     navigate('/');
   };
 
@@ -76,7 +87,7 @@ const CreateGamePage = () => {
           fontWeight={600}
           color={'black'}
         >
-          Create Game
+          Update Game
         </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -111,15 +122,6 @@ const CreateGamePage = () => {
           </Grid>
 
           <Grid item xs={12}>
-            {/* <TextField
-              onChange={handleChange}
-              name='date'
-              value={getDateValue(game.date)}
-              InputLabelProps={{ shrink: true }}
-              type='date'
-              fullWidth
-              label='date'
-            /> */}
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 sx={{ width: '100%' }}
@@ -160,7 +162,19 @@ const CreateGamePage = () => {
               disableElevation
               onClick={handleSubmit}
             >
-              Create
+              Update
+            </Button>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Button
+              fullWidth
+              sx={{ background: '#f44336', color: '#fff' }}
+              variant='contained'
+              disableElevation
+              onClick={handleDeleteGame}
+            >
+              Delete
             </Button>
           </Grid>
         </Grid>
@@ -169,4 +183,4 @@ const CreateGamePage = () => {
   );
 };
 
-export default CreateGamePage;
+export default EditGamePage;

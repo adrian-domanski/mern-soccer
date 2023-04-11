@@ -49,7 +49,7 @@ export default function SingleGamePage() {
           <Typography variant='h6'>{singleGame?.time}</Typography>
         </Grid>
         <Grid item xs={12}>
-          <Link to={`/editgame/${singleGame?._id}`}>
+          <Link to={`/edit-game/${singleGame?._id}`}>
             <Button className='green-btn'>Edit</Button>
           </Link>
         </Grid>
