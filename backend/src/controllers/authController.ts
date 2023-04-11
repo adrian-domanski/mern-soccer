@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import User from '../models/User';
 import bcrypt from 'bcrypt';
-import { Types } from 'mongoose';
 import { generateJwt } from '../middlewares/jwtMethods';
+import jwt from 'jsonwebtoken';
 
-export const signUp = async (req: Request, res: Response) => {
-  const { username, email, password, role } = req.body;
+export const loginUser = async (req: Request, res: Response) => {
+  const { email, password } = req.body;
   const emailCheck = await User.findOne({ email });
 
   if (emailCheck) {
@@ -26,7 +26,7 @@ export const signUp = async (req: Request, res: Response) => {
   }
 };
 
-export const signIn = async (req: Request, res: Response) => {
+export const registerUser = async (req: Request, res: Response) => {
   // check if user exists
   const { email, password } = req.body;
   const user = await User.findOne({ email });
@@ -46,4 +46,20 @@ export const signIn = async (req: Request, res: Response) => {
   const token = await generateJwt(user._id, user.email);
 
   res.status(200).json({ user, token });
+};
+
+export const getCurrentUser = async (req: Request, res: Response) => {
+  const token = req.header('Authorization')?.split(' ')[1];
+  if (!token) return res.status(401).json({ error: 'Unauthorized' });
+  try {
+    const token_info: any = jwt.verify(token, process.env.JWT_SECRET!);
+    const user = await User.findOne({ email: token_info.email });
+
+    if (!user) return res.status(400).json({ error: 'User not found' });
+    const { email, username, role, ...extraUserData } = user;
+
+    return res.status(200).json({ username, email, role, ...extraUserData });
+  } catch (error) {
+    return res.status(500).json({ error: "Couldn't get current user" });
+  }
 };
