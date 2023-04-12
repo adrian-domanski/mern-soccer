@@ -17,12 +17,14 @@ const initialState: GameState = {
   errors: null,
 };
 
+const API_URL = import.meta.env.VITE_SERVER_URL;
+
 // actions
 export const getGames = createAsyncThunk<Game[]>(
   'games/getGames',
   async (_, thunkAPI) => {
     try {
-      const response = await fetch('http://localhost:3001/api/games');
+      const response = await fetch(`${API_URL}/api/games`);
       const data = await response.json();
       return data;
     } catch (error) {
@@ -35,9 +37,7 @@ export const getGameById = createAsyncThunk<Game, string>(
   'games/getGameById',
   async (id, thunkAPI) => {
     try {
-      const response = await axios.get(
-        `http://localhost:3001/api/games/game/${id}`
-      );
+      const response = await axios.get(`${API_URL}/api/games/game/${id}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -49,10 +49,7 @@ export const createGame = createAsyncThunk<Game, Object>(
   'games/createGame',
   async (game, thunkAPI) => {
     try {
-      const response = await axios.post(
-        'http://localhost:3001/api/games/game',
-        game
-      );
+      const response = await axios.post(`${API_URL}/api/games/game`, game);
       thunkAPI.dispatch(getGames());
       return response.data;
     } catch (error) {
@@ -66,7 +63,7 @@ export const updateGame = createAsyncThunk<Game, Game>(
   async (game, thunkAPI) => {
     try {
       const response = await axios.put(
-        `http://localhost:3001/api/games/game/${game._id}`,
+        `${API_URL}/api/games/game/${game._id}`,
         game
       );
       thunkAPI.dispatch(getGames());
@@ -81,9 +78,7 @@ export const deleteGame = createAsyncThunk<Game, string>(
   'games/deleteGame',
   async (id, thunkAPI) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3001/api/games/game/${id}`
-      );
+      const response = await axios.delete(`${API_URL}/api/games/game/${id}`);
       thunkAPI.dispatch(getGames());
       return response.data;
     } catch (error) {
