@@ -11,6 +11,7 @@ import LoginPage from './features/account/LoginPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getCurrentUser } from './features/account/accountSlice';
+import AuthGuard from './guards/AuthGuard';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -31,8 +32,10 @@ function App() {
       <Routes>
         <Route path='/' element={<GamesPage />} />
         <Route path='/game/:id' element={<SingleGamePage />} />
-        <Route path='/create-game' element={<CreateGamePage />} />
-        <Route path='/edit-game/:id' element={<EditGamePage />} />
+        <Route element={<AuthGuard />}>
+          <Route path='/create-game' element={<CreateGamePage />} />
+          <Route path='/edit-game/:id' element={<EditGamePage />} />
+        </Route>
         <Route path='/login' element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
