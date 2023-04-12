@@ -14,7 +14,7 @@ export default function GamesPage() {
       <Grid container spacing={3} sx={{ marginTop: 5 }}>
         {games &&
           games.map((game) => (
-            <Grid item key={game._id} xs={4}>
+            <Grid item key={game._id} xs={12} md={6} lg={4}>
               <Link to={`/game/${game._id}`}>
                 <GameCard {...game} />
               </Link>

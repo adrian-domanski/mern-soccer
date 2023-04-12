@@ -7,6 +7,7 @@ import { getGameById } from './gameSlice';
 export default function SingleGamePage() {
   const dispatch = useAppDispatch();
   const { singleGame } = useAppSelector((state) => state.games);
+  const { isLoggedIn } = useAppSelector((state) => state.account);
   const { id } = useParams();
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function SingleGamePage() {
             : ''
         }`}
       </Typography>
-      <Grid container>
+      <Grid container sx={{ mt: 3 }}>
         <Grid item xs={4}>
           <Typography variant='h6'>{singleGame?.name}</Typography>
         </Grid>
@@ -48,11 +49,19 @@ export default function SingleGamePage() {
         <Grid item xs={4}>
           <Typography variant='h6'>{singleGame?.time}</Typography>
         </Grid>
-        <Grid item xs={12}>
-          <Link to={`/edit-game/${singleGame?._id}`}>
-            <Button className='green-btn'>Edit</Button>
-          </Link>
-        </Grid>
+        {isLoggedIn ? (
+          <Grid item xs={12} sx={{ mt: 3 }}>
+            <Link to={`/edit-game/${singleGame?._id}`}>
+              <Button className='green-btn'>Edit</Button>
+            </Link>
+          </Grid>
+        ) : (
+          <Grid item xs={12} sx={{ mt: 3 }}>
+            <Link to={`/login`}>
+              <Button className='green-btn'>Login to edit</Button>
+            </Link>
+          </Grid>
+        )}
       </Grid>
     </Container>
   );

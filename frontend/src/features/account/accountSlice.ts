@@ -104,6 +104,19 @@ export const accountSlice = createSlice({
       state.loading = false;
       state.isLoggedIn = true;
     });
+    builder.addCase(loginUser.rejected, (state, action) => {
+      state.loading = false;
+      state.errors = action.payload;
+    });
+    builder.addCase(registerUser.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.loading = false;
+      state.isLoggedIn = true;
+    });
+    builder.addCase(registerUser.rejected, (state, action) => {
+      state.loading = false;
+      state.errors = action.payload;
+    });
   },
 });
 

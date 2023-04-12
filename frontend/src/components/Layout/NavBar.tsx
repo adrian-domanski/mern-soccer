@@ -15,13 +15,11 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/store';
 import { logOutUser } from '../../features/account/accountSlice';
 
-const pages = [
+const settings = [
   { title: 'Home', route: '/' },
-  { title: 'Games', route: '/games' },
-  { title: 'Add Game', route: '/createGame' },
-  { title: 'Login', route: '/login' },
+  { title: 'Create Game', route: '/create-game' },
+  { title: 'Logout', route: '/' }, // add logout function here
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout', 'Login'];
 
 const NavBar = () => {
   const { isLoggedIn } = useAppSelector((state) => state.account);
@@ -219,35 +217,47 @@ const NavBar = () => {
             )}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title='Open settings'>
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id='menu-appbar'
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign='center'>{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          {isLoggedIn && (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title='Open settings'>
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt='Avatar' src='https://i.pravatar.cc/80' />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id='menu-appbar'
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <Link to={setting.route}>
+                    <MenuItem
+                      key={setting.title}
+                      onClick={() => {
+                        handleCloseUserMenu();
+                        setting.title === 'Logout' && dispatch(logOutUser());
+                      }}
+                    >
+                      <Typography textAlign='center'>
+                        {setting.title}
+                      </Typography>
+                    </MenuItem>
+                  </Link>
+                ))}
+              </Menu>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

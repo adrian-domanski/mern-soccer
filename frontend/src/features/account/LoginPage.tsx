@@ -75,7 +75,7 @@ export default function LoginPage() {
           </Grid>
 
           <Grid item sx={{ my: 3 }}>
-            <Link to='/register'>Already have an account?</Link>
+            <Link to='/register'>Don't have an account yet?</Link>
           </Grid>
         </Grid>
       </Container>

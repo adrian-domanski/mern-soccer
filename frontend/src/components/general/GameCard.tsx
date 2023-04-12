@@ -14,7 +14,7 @@ export default function GameCard({
     <div className='game-card'>
       <h2>{name}</h2>
       <p>{address}</p>
-      <p>{numberOfPeople}</p>
+      <p>Players: {numberOfPeople}</p>
       <p>{time ? time : 'not time assigned yet'}</p>
       <p>{date.toString().split('T')[0].split('-').reverse().join('/')}</p>
     </div>
