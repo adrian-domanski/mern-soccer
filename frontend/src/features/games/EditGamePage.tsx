@@ -5,7 +5,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { deleteGame, filterGames, getGameById, updateGame } from './gameSlice';
+import { deleteGame, getGameById, updateGame } from './gameSlice';
 import { useAppDispatch, useAppSelector } from '../../store/store';
 import { useNavigate, useParams } from 'react-router-dom';
 
