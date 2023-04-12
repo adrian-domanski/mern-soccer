@@ -7,11 +7,13 @@ import NavBar from './components/Layout/NavBar';
 import SingleGamePage from './features/games/SingleGamePage';
 import CreateGamePage from './features/games/CreateGamePage';
 import EditGamePage from './features/games/EditGamePage';
-import LoginPage from './features/account/LoginPage';
+import RegisterPage from './features/account/RegisterPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getCurrentUser } from './features/account/accountSlice';
 import AuthGuard from './guards/AuthGuard';
+import LoggedInGuard from './guards/LoggedInGuard';
+import LoginPage from './features/account/LoginPage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -36,7 +38,11 @@ function App() {
           <Route path='/create-game' element={<CreateGamePage />} />
           <Route path='/edit-game/:id' element={<EditGamePage />} />
         </Route>
-        <Route path='/login' element={<LoginPage />} />
+
+        <Route element={<LoggedInGuard />}>
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/login' element={<LoginPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IUser } from '../../interfaces/User';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { ICredentials } from './LoginPage';
+import { ICredentials } from './RegisterPage';
 
 const API_URL = import.meta.env.VITE_SERVER_URL;
 
@@ -20,13 +20,15 @@ const initialState: IAccountState = {
   errors: [],
 };
 
-export const registerUser = createAsyncThunk(
+export const registerUser = createAsyncThunk<IUser, Object>(
   'account/register',
-  async (user: IUser, { rejectWithValue }) => {
+  async (user: Object, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${API_URL}/api/auth/register`, user);
+      toast.success('Successfully created user!');
       return response.data;
     } catch (err: any) {
+      toast.error('Error creating user');
       return rejectWithValue({ error: err.data });
     }
   }

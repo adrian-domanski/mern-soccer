@@ -5,23 +5,25 @@ import { Link } from 'react-router-dom';
 
 import './LoginPage.css';
 import { useAppDispatch } from '../../store/store';
-import { loginUser } from './accountSlice';
+import { loginUser, registerUser } from './accountSlice';
+import { toast } from 'react-toastify';
 
 export interface ICredentials {
   email: string;
   password: string;
 }
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const [user, setUser] = useState({
     email: '',
     password: '',
+    username: '',
   });
   const dispatch = useAppDispatch();
 
   function handleSubmit(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    dispatch(loginUser(user));
+    dispatch(registerUser(user));
   }
 
   return (
@@ -45,7 +47,7 @@ export default function LoginPage() {
             sx={{ m: '80px auto 0 auto', fontWeight: 600 }}
             variant='h3'
           >
-            Log In
+            Register
           </Typography>
 
           <Grid item xs={12}>
@@ -69,13 +71,23 @@ export default function LoginPage() {
           </Grid>
 
           <Grid item xs={12}>
+            <Input
+              value={user.username}
+              onChange={(e) => setUser({ ...user, username: e.target.value })}
+              placeholder='username'
+              type='text'
+              className='login-input'
+            />
+          </Grid>
+
+          <Grid item xs={12}>
             <Button onClick={handleSubmit} fullWidth className='green-btn'>
-              Login
+              Register
             </Button>
           </Grid>
 
           <Grid item sx={{ my: 3 }}>
-            <Link to='/register'>Already have an account?</Link>
+            <Link to='/login'>Already have an account?</Link>
           </Grid>
         </Grid>
       </Container>

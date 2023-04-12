@@ -119,13 +119,22 @@ const NavBar = () => {
                   </Link>
                 </>
               ) : (
-                <Link to='/login'>
-                  <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography fontWeight={600} textAlign='center'>
-                      Login
-                    </Typography>
-                  </MenuItem>
-                </Link>
+                <>
+                  <Link to='/login'>
+                    <MenuItem onClick={handleCloseNavMenu}>
+                      <Typography fontWeight={600} textAlign='center'>
+                        Login
+                      </Typography>
+                    </MenuItem>
+                  </Link>
+                  <Link to='/register'>
+                    <MenuItem onClick={handleCloseNavMenu}>
+                      <Typography fontWeight={600} textAlign='center'>
+                        Register
+                      </Typography>
+                    </MenuItem>
+                  </Link>
+                </>
               )}
             </Menu>
           </Box>
@@ -179,19 +188,34 @@ const NavBar = () => {
                 </Button>
               </>
             ) : (
-              <Link to='/login'>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{
-                    my: 2,
-                    color: 'white',
-                    display: 'block',
-                    fontWeight: 600,
-                  }}
-                >
-                  Login
-                </Button>
-              </Link>
+              <>
+                <Link to='/login'>
+                  <Button
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 2,
+                      color: 'white',
+                      display: 'block',
+                      fontWeight: 600,
+                    }}
+                  >
+                    Login
+                  </Button>
+                </Link>
+                <Link to='/register'>
+                  <Button
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 2,
+                      color: 'white',
+                      display: 'block',
+                      fontWeight: 600,
+                    }}
+                  >
+                    Register
+                  </Button>
+                </Link>
+              </>
             )}
           </Box>
 
