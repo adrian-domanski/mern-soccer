@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import { generateJwt } from '../middlewares/jwtMethods';
 import jwt from 'jsonwebtoken';
 
-export const loginUser = async (req: Request, res: Response) => {
+export const registerUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   const emailCheck = await User.findOne({ email });
 
@@ -12,7 +12,7 @@ export const loginUser = async (req: Request, res: Response) => {
     return res.status(403).json({ error: 'Email is already in use' });
   }
 
-  const user = await new User(req.body);
+  const user = new User(req.body);
 
   try {
     const salt = await bcrypt.genSalt(10);
@@ -26,7 +26,7 @@ export const loginUser = async (req: Request, res: Response) => {
   }
 };
 
-export const registerUser = async (req: Request, res: Response) => {
+export const loginUser = async (req: Request, res: Response) => {
   // check if user exists
   const { email, password } = req.body;
   const user = await User.findOne({ email });
@@ -49,16 +49,16 @@ export const registerUser = async (req: Request, res: Response) => {
 };
 
 export const getCurrentUser = async (req: Request, res: Response) => {
-  const token = req.header('Authorization')?.split(' ')[1];
+  const token = req.header('Authorization');
   if (!token) return res.status(401).json({ error: 'Unauthorized' });
   try {
     const token_info: any = jwt.verify(token, process.env.JWT_SECRET!);
     const user = await User.findOne({ email: token_info.email });
 
     if (!user) return res.status(400).json({ error: 'User not found' });
-    const { email, username, role, ...extraUserData } = user;
+    const { email, username, role } = user;
 
-    return res.status(200).json({ username, email, role, ...extraUserData });
+    return res.status(200).json({ username, email, role });
   } catch (error) {
     return res.status(500).json({ error: "Couldn't get current user" });
   }

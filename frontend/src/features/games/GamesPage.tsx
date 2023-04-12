@@ -16,7 +16,7 @@ export default function GamesPage() {
           games.map((game) => (
             <Grid item key={game._id} xs={4}>
               <Link to={`/game/${game._id}`}>
-                <GameCard game={game} />
+                <GameCard {...game} />
               </Link>
             </Grid>
           ))}

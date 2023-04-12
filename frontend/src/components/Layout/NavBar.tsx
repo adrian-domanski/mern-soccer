@@ -12,22 +12,19 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
-// import { logOutUser } from '../../features/account/accountSlice';
 import { useAppDispatch, useAppSelector } from '../../store/store';
-
-import './Navbar.styles.css';
+import { logOutUser } from '../../features/account/accountSlice';
 
 const pages = [
   { title: 'Home', route: '/' },
   { title: 'Games', route: '/games' },
-  { title: 'Add Game', route: '/create-game' },
+  { title: 'Add Game', route: '/createGame' },
   { title: 'Login', route: '/login' },
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout', 'Login'];
 
 const NavBar = () => {
-  // const { isLoggedIn } = useAppSelector((state) => state.account);
-  const isLoggedIn = !false;
+  const { isLoggedIn } = useAppSelector((state) => state.account);
   const dispatch = useAppDispatch();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -55,12 +52,16 @@ const NavBar = () => {
     <AppBar className='navbar' position='static'>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
-          <Link to='/' className='navbar__home-link'>
+          <Link to='/'>
             <Typography
               variant='h6'
               noWrap
               component='div'
-              sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                color: 'white',
+              }}
             >
               FutTube
             </Typography>
@@ -104,7 +105,7 @@ const NavBar = () => {
               </Link>
               {isLoggedIn ? (
                 <>
-                  <MenuItem>
+                  <MenuItem onClick={() => dispatch(logOutUser())}>
                     <Typography fontWeight={600} textAlign='center'>
                       Log Out
                     </Typography>
@@ -128,16 +129,14 @@ const NavBar = () => {
               )}
             </Menu>
           </Box>
-          <Link to='/'>
-            <Typography
-              variant='h6'
-              noWrap
-              component='div'
-              sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-            >
-              FutTube
-            </Typography>
-          </Link>
+          <Typography
+            variant='h6'
+            noWrap
+            component='div'
+            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+          >
+            FutTube
+          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Link to='/'>
               <Button
@@ -164,11 +163,11 @@ const NavBar = () => {
                       fontWeight: 600,
                     }}
                   >
-                    Createm Game
+                    Create Game
                   </Button>
                 </Link>
                 <Button
-                  // onClick={() => dispatch(logOutUser())}
+                  onClick={() => dispatch(logOutUser())}
                   sx={{
                     my: 2,
                     color: 'white',
