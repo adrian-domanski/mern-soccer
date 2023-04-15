@@ -1,7 +1,8 @@
 import tw, { styled } from 'twin.macro';
+import { FontTypes, setTypography } from '../../../styles/mixins';
 
 export const FooterContainer = styled.footer`
-  ${tw`py-8 bg-gray-800 mt-auto`}
+  ${tw`py-8 bg-gray-800`}
 `;
 
 export const FooterColumn = styled.div`
@@ -34,4 +35,9 @@ export const IconWrapper = styled.div`
   svg {
     font-size: 1.5rem;
   }
+`;
+
+export const Paragraph = styled.p`
+  ${setTypography(FontTypes.Paragraph)}
+  ${tw`text-gray-400`}
 `;

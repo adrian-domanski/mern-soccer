@@ -7,7 +7,7 @@ import { NavbarLinkNames } from '../../../constants/enum';
 
 import * as Styled from './Navbar.styles';
 import 'twin.macro';
-import { getAuthLinks } from '../../../utils/helpers';
+import { getNavLinks } from '../../../utils/helpers';
 
 const NavBar = () => {
   const [isMobileActive, setIsMobileActive] = useState(false);
@@ -24,7 +24,7 @@ const NavBar = () => {
         </Styled.Logo>
 
         <Styled.NavbarList isMobileOpen={isMobileActive}>
-          {getAuthLinks(isLoggedIn).map(([name, link]) => (
+          {getNavLinks(isLoggedIn).map(([name, link]) => (
             <Styled.NavbarListItem key={link.route}>
               <Link to={link.route}>
                 <Styled.NavbarLink

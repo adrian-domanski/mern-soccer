@@ -4,7 +4,7 @@ import {
   NavbarLinks,
 } from '../constants/enum';
 
-export const getAuthLinks = (isLoggedIn: boolean) =>
+export const getNavLinks = (isLoggedIn: boolean) =>
   Object.entries(NavbarLinks)
     .map(([name, link]) => {
       if (

@@ -1,8 +1,8 @@
 import { FaLinkedin } from 'react-icons/fa';
 import { AiFillGithub } from 'react-icons/ai';
 import { RiGlobalFill } from 'react-icons/ri';
-import { Section } from '../../../styles/Containers';
-import { getAuthLinks } from '../../../utils/helpers';
+import { Section } from '../../../styles/components/Containers';
+import { getNavLinks } from '../../../utils/helpers';
 import { useAppSelector } from '../../../store/store';
 import { Link } from 'react-router-dom';
 import { SocialLinks } from '../../../constants/enum';
@@ -21,17 +21,17 @@ const Footer = () => {
             <Styled.FooterColumn>
               <Styled.FooterTitle>FutTube™</Styled.FooterTitle>
               <Styled.FooterContent>
-                <p tw="my-2">
+                <Styled.Paragraph tw="my-2">
                   Innovative soccer platform for global fans. Join now for an
                   unparalleled experience of the beautiful game.
-                </p>
+                </Styled.Paragraph>
               </Styled.FooterContent>
             </Styled.FooterColumn>
             <Styled.FooterColumn>
               <Styled.FooterTitle>Navigation</Styled.FooterTitle>
               <Styled.FooterContent>
                 <Styled.FooterLinkList>
-                  {getAuthLinks(isLoggedIn).map(([, link]) => (
+                  {getNavLinks(isLoggedIn).map(([, link]) => (
                     <Styled.FooterListItem key={link.route}>
                       <Link to={link.route}>
                         <Styled.FooterLink>{link.title}</Styled.FooterLink>

@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import GamesPage from '../../../features/games/GamesPage';
+import GamePage from '../../../containers/GamePage/GamePage';
 import SingleGamePage from '../../../features/games/SingleGamePage';
 import AuthGuard from '../../../guards/AuthGuard';
 import CreateGamePage from '../../../features/games/CreateGamePage';
@@ -11,7 +11,7 @@ import LoginPage from '../../../features/account/LoginPage';
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<GamesPage />} />
+      <Route path="/" element={<GamePage />} />
       <Route path="/game/:id" element={<SingleGamePage />} />
       <Route element={<AuthGuard />}>
         <Route path="/create-game" element={<CreateGamePage />} />
