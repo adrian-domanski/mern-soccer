@@ -31,4 +31,13 @@ export const NavbarLinks: Record<NavbarLinkNames, NavbarLinkRoute> = {
     isAuth: false,
   },
 };
-//
+
+/**
+ * Footer
+ */
+
+export enum SocialLinks {
+  GitHub = 'https://github.com/adrian-domanski',
+  LinkedIn = 'https://www.linkedin.com/in/adrian-domanski-dev/',
+  Portfolio = 'https://www.kodario.dev/',
+}

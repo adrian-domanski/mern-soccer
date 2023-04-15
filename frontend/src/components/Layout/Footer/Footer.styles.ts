@@ -1,7 +1,7 @@
 import tw, { styled } from 'twin.macro';
 
 export const FooterContainer = styled.footer`
-  ${tw`py-8 bg-gray-800`}
+  ${tw`py-8 bg-gray-800 mt-auto`}
 `;
 
 export const FooterColumn = styled.div`
@@ -25,3 +25,13 @@ export const FooterLinkList = styled.ul`
 `;
 
 export const FooterListItem = tw.li``;
+
+export const SocialList = tw.ul`flex space-x-3`;
+
+export const SocialListItem = tw.li``;
+
+export const IconWrapper = styled.div`
+  svg {
+    font-size: 1.5rem;
+  }
+`;

@@ -1,15 +1,14 @@
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedin,
-  FaInstagram,
-} from 'react-icons/fa';
-import * as Styled from './Footer.styles';
-import 'twin.macro';
+import { FaLinkedin } from 'react-icons/fa';
+import { AiFillGithub } from 'react-icons/ai';
+import { RiGlobalFill } from 'react-icons/ri';
 import { Section } from '../../../styles/Containers';
 import { getAuthLinks } from '../../../utils/helpers';
 import { useAppSelector } from '../../../store/store';
 import { Link } from 'react-router-dom';
+import { SocialLinks } from '../../../constants/enum';
+
+import * as Styled from './Footer.styles';
+import 'twin.macro';
 
 const Footer = () => {
   const { isLoggedIn } = useAppSelector((state) => state.account);
@@ -46,28 +45,38 @@ const Footer = () => {
             <Styled.FooterColumn>
               <Styled.FooterTitle>Follow Us</Styled.FooterTitle>
               <Styled.FooterContent>
-                <ul tw="flex">
-                  <li tw="mx-2">
-                    <Styled.FooterLink href="#">
-                      <FaFacebookF />
+                <Styled.SocialList>
+                  <Styled.SocialListItem>
+                    <Styled.FooterLink
+                      href={SocialLinks.GitHub}
+                      target="_blank"
+                    >
+                      <Styled.IconWrapper>
+                        <AiFillGithub />
+                      </Styled.IconWrapper>
                     </Styled.FooterLink>
-                  </li>
-                  <li tw="mx-2">
-                    <Styled.FooterLink href="#">
-                      <FaTwitter />
+                  </Styled.SocialListItem>
+                  <Styled.SocialListItem>
+                    <Styled.FooterLink
+                      href={SocialLinks.LinkedIn}
+                      target="_blank"
+                    >
+                      <Styled.IconWrapper>
+                        <FaLinkedin />
+                      </Styled.IconWrapper>
                     </Styled.FooterLink>
-                  </li>
-                  <li tw="mx-2">
-                    <Styled.FooterLink href="#">
-                      <FaLinkedin />
+                  </Styled.SocialListItem>
+                  <Styled.SocialListItem>
+                    <Styled.FooterLink
+                      href={SocialLinks.Portfolio}
+                      target="_blank"
+                    >
+                      <Styled.IconWrapper>
+                        <RiGlobalFill />
+                      </Styled.IconWrapper>
                     </Styled.FooterLink>
-                  </li>
-                  <li tw="mx-2">
-                    <Styled.FooterLink href="#">
-                      <FaInstagram />
-                    </Styled.FooterLink>
-                  </li>
-                </ul>
+                  </Styled.SocialListItem>
+                </Styled.SocialList>
               </Styled.FooterContent>
             </Styled.FooterColumn>
           </div>
