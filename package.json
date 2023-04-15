@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/adrian-domanski/mern-soccer#readme",
   "dependencies": {
-    "concurrently": "^8.0.1"
+    "concurrently": "^8.0.1",
+    "react-icons": "^4.8.0"
   },
   "devDependencies": {
     "husky": "^8.0.0"
