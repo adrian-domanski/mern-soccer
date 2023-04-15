@@ -32,16 +32,16 @@ function App() {
       <NavBar />
       <ToastContainer />
       <Routes>
-        <Route path='/' element={<GamesPage />} />
-        <Route path='/game/:id' element={<SingleGamePage />} />
+        <Route path="/" element={<GamesPage />} />
+        <Route path="/game/:id" element={<SingleGamePage />} />
         <Route element={<AuthGuard />}>
-          <Route path='/create-game' element={<CreateGamePage />} />
-          <Route path='/edit-game/:id' element={<EditGamePage />} />
+          <Route path="/create-game" element={<CreateGamePage />} />
+          <Route path="/edit-game/:id" element={<EditGamePage />} />
         </Route>
 
         <Route element={<LoggedInGuard />}>
-          <Route path='/register' element={<RegisterPage />} />
-          <Route path='/login' element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

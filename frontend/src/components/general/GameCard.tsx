@@ -1,17 +1,15 @@
 import { Game } from '../../interfaces/Game';
 import './GameCard.css';
 
-interface Props extends Game {}
-
 export default function GameCard({
   address,
   date,
   name,
   numberOfPeople,
   time,
-}: Props) {
+}: Game) {
   return (
-    <div className='game-card'>
+    <div className="game-card">
       <h2>{name}</h2>
       <p>{address}</p>
       <p>Players: {numberOfPeople}</p>

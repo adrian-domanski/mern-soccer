@@ -25,7 +25,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className='login-body'>
+    <div className="login-body">
       <Container
         sx={{
           py: 10,
@@ -35,15 +35,15 @@ export default function LoginPage() {
         }}
       >
         <Grid
-          className='login-container'
+          className="login-container"
           container
           spacing={3}
           sx={{ margin: '0 auto', backgroundColor: 'white', pr: 10, pl: 7 }}
         >
           <Typography
-            className='title'
+            className="title"
             sx={{ m: '80px auto 0 auto', fontWeight: 600 }}
-            variant='h3'
+            variant="h3"
           >
             Log In
           </Typography>
@@ -52,9 +52,9 @@ export default function LoginPage() {
             <Input
               value={user.email}
               onChange={(e) => setUser({ ...user, email: e.target.value })}
-              placeholder='email'
-              type='email'
-              className='login-input'
+              placeholder="email"
+              type="email"
+              className="login-input"
             />
           </Grid>
 
@@ -62,20 +62,20 @@ export default function LoginPage() {
             <Input
               value={user.password}
               onChange={(e) => setUser({ ...user, password: e.target.value })}
-              placeholder='password'
-              type='password'
-              className='login-input'
+              placeholder="password"
+              type="password"
+              className="login-input"
             />
           </Grid>
 
           <Grid item xs={12}>
-            <Button onClick={handleSubmit} fullWidth className='green-btn'>
+            <Button onClick={handleSubmit} fullWidth className="green-btn">
               Login
             </Button>
           </Grid>
 
           <Grid item sx={{ my: 3 }}>
-            <Link to='/register'>Don't have an account yet?</Link>
+            <Link to="/register">Don't have an account yet?</Link>
           </Grid>
         </Grid>
       </Container>

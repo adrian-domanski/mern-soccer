@@ -8,7 +8,7 @@ export default function GamesPage() {
 
   return (
     <Container>
-      <Typography variant='h2' fontWeight={'bold'} sx={{ mt: 5 }}>
+      <Typography variant="h2" fontWeight={'bold'} sx={{ mt: 5 }}>
         Games
       </Typography>
       <Grid container spacing={3} sx={{ marginTop: 5 }}>

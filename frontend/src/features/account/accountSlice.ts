@@ -66,22 +66,25 @@ export const getCurrentUser = createAsyncThunk(
   'account/getCurrentUser',
   async (_, thunkAPI) => {
     try {
-      const token = JSON.parse(localStorage.getItem('jwt_soccer')!);
-      if (!token) {
-        thunkAPI.dispatch(setLoggedIn(false));
-        return console.log('No token found');
-      }
+      const token = localStorage.getItem('jwt_soccer');
 
-      const response = await axios.get(`${API_URL}/api/auth/me`, {
-        headers: {
-          Authorization: token,
-        },
-      });
-      if (response.data) {
-        thunkAPI.dispatch(setLoggedIn(true));
+      if (token) {
+        const parsedToken = JSON.parse(token);
+
+        const response = await axios.get(`${API_URL}/api/auth/me`, {
+          headers: {
+            Authorization: parsedToken,
+          },
+        });
+        if (response.data) {
+          thunkAPI.dispatch(setLoggedIn(true));
+        } else {
+          thunkAPI.dispatch(setLoggedIn(false));
+          return console.error('getCurrentUser: No user found');
+        }
       } else {
         thunkAPI.dispatch(setLoggedIn(false));
-        return console.error('getCurrentUser: No user found');
+        return console.error('getCurrentUser: No token found');
       }
     } catch (err: any) {
       return thunkAPI.rejectWithValue({ error: err.data });

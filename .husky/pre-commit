@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+
+# Frontend lintner and formatter
+cd ./frontend
+
+echo "🔍 Checking for linting errors [...]"
+npm run lint
+
+echo "🔧 Formating your messy code [...]"
+npm run format

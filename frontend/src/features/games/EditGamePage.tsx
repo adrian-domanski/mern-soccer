@@ -40,7 +40,7 @@ const EditGamePage = () => {
     const date = new Date(dateObj.toString());
     let day = String(date.getDate());
     let month = String(date.getMonth() + 1);
-    let year = date.getFullYear();
+    const year = date.getFullYear();
 
     if (Number(day) < 10) {
       day = `0${day}`;
@@ -83,7 +83,7 @@ const EditGamePage = () => {
       <Grid sx={{ margin: '0 auto' }}>
         <Typography
           sx={{ marginBottom: 2 }}
-          variant='h4'
+          variant="h4"
           fontWeight={600}
           color={'black'}
         >
@@ -93,31 +93,31 @@ const EditGamePage = () => {
           <Grid item xs={12}>
             <TextField
               onChange={handleChange}
-              name='name'
+              name="name"
               value={game.name}
               fullWidth
-              label='name'
+              label="name"
             />
           </Grid>
 
           <Grid item xs={12}>
             <TextField
               onChange={handleChange}
-              name='address'
+              name="address"
               value={game.address}
               fullWidth
-              label='address'
+              label="address"
             />
           </Grid>
 
           <Grid item xs={12}>
             <TextField
               onChange={handleChange}
-              name='numberOfPeople'
+              name="numberOfPeople"
               value={game.numberOfPeople}
-              type='number'
+              type="number"
               fullWidth
-              label='numberOfPeople'
+              label="numberOfPeople"
             />
           </Grid>
 
@@ -125,10 +125,10 @@ const EditGamePage = () => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 sx={{ width: '100%' }}
-                label='Date'
+                label="Date"
                 value={getDateValue(game.date)}
                 onChange={(newValue) => {
-                  setGame({ ...game, date: newValue! });
+                  newValue && setGame({ ...game, date: newValue });
                 }}
               />
             </LocalizationProvider>
@@ -137,28 +137,28 @@ const EditGamePage = () => {
           <Grid item xs={12}>
             <TextField
               onChange={handleChange}
-              name='time'
+              name="time"
               value={game.time}
               fullWidth
-              label='time'
+              label="time"
             />
           </Grid>
 
           <Grid item xs={12}>
             <TextField
               onChange={handleChange}
-              name='fieldNumber'
+              name="fieldNumber"
               value={game.fieldNumber}
-              type='number'
+              type="number"
               fullWidth
-              label='fieldNumber'
+              label="fieldNumber"
             />
           </Grid>
 
           <Grid item xs={12}>
             <Button
               fullWidth
-              variant='contained'
+              variant="contained"
               disableElevation
               onClick={handleSubmit}
             >
@@ -170,7 +170,7 @@ const EditGamePage = () => {
             <Button
               fullWidth
               sx={{ background: '#f44336', color: '#fff' }}
-              variant='contained'
+              variant="contained"
               disableElevation
               onClick={handleDeleteGame}
             >

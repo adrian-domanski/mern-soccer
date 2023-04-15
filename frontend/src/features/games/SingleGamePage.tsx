@@ -20,15 +20,15 @@ export default function SingleGamePage() {
 
   return (
     <Container sx={{ marginTop: 10 }}>
-      <Typography sx={{ my: 3 }} variant='h2'>
+      <Typography sx={{ my: 3 }} variant="h2">
         Welcome to this game
       </Typography>
-      <Typography sx={{ color: 'gray' }} variant='h4' fontWeight={600}>
+      <Typography sx={{ color: 'gray' }} variant="h4" fontWeight={600}>
         {`${singleGame?.address} ${
           singleGame?.time ? `- ${singleGame?.time}h` : ''
         } - ${
           singleGame?.date
-            ? (singleGame?.date)
+            ? singleGame.date
                 .toString()
                 .split('T')[0]
                 .split('-')
@@ -39,26 +39,26 @@ export default function SingleGamePage() {
       </Typography>
       <Grid container sx={{ mt: 3 }}>
         <Grid item xs={4}>
-          <Typography variant='h6'>{singleGame?.name}</Typography>
+          <Typography variant="h6">{singleGame?.name}</Typography>
         </Grid>
         <Grid item xs={4}>
-          <Typography variant='h6'>
+          <Typography variant="h6">
             No. Players: {singleGame?.numberOfPeople}
           </Typography>
         </Grid>
         <Grid item xs={4}>
-          <Typography variant='h6'>{singleGame?.time}</Typography>
+          <Typography variant="h6">{singleGame?.time}</Typography>
         </Grid>
         {isLoggedIn ? (
           <Grid item xs={12} sx={{ mt: 3 }}>
             <Link to={`/edit-game/${singleGame?._id}`}>
-              <Button className='green-btn'>Edit</Button>
+              <Button className="green-btn">Edit</Button>
             </Link>
           </Grid>
         ) : (
           <Grid item xs={12} sx={{ mt: 3 }}>
             <Link to={`/login`}>
-              <Button className='green-btn'>Login to edit</Button>
+              <Button className="green-btn">Login to edit</Button>
             </Link>
           </Grid>
         )}

@@ -1,6 +1,5 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Game } from '../../interfaces/Game';
-import { RootState } from '../../store/store';
 import axios from 'axios';
 
 interface GameState {
@@ -125,7 +124,7 @@ export const gameSlice = createSlice({
     builder.addCase(updateGame.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(updateGame.fulfilled, (state, action) => {
+    builder.addCase(updateGame.fulfilled, (state) => {
       state.loading = false;
     });
     builder.addCase(updateGame.rejected, (state, action) => {
@@ -136,7 +135,7 @@ export const gameSlice = createSlice({
     builder.addCase(createGame.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(createGame.fulfilled, (state, action) => {
+    builder.addCase(createGame.fulfilled, (state) => {
       state.loading = false;
     });
     builder.addCase(createGame.rejected, (state, action) => {
@@ -147,7 +146,7 @@ export const gameSlice = createSlice({
     builder.addCase(deleteGame.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(deleteGame.fulfilled, (state, action) => {
+    builder.addCase(deleteGame.fulfilled, (state) => {
       state.loading = false;
     });
     builder.addCase(deleteGame.rejected, (state, action) => {

@@ -47,14 +47,14 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar className='navbar' position='static'>
-      <Container maxWidth='xl'>
+    <AppBar className="navbar" position="static">
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Link to='/'>
+          <Link to="/">
             <Typography
-              variant='h6'
+              variant="h6"
               noWrap
-              component='div'
+              component="div"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -67,17 +67,17 @@ const NavBar = () => {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              size='large'
-              aria-label='account of current user'
-              aria-controls='menu-appbar'
-              aria-haspopup='true'
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color='inherit'
+              color="inherit"
             >
               <MenuIcon />
             </IconButton>
             <Menu
-              id='menu-appbar'
+              id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
@@ -94,9 +94,9 @@ const NavBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <Link to='/'>
+              <Link to="/">
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography fontWeight={600} textAlign='center'>
+                  <Typography fontWeight={600} textAlign="center">
                     Home
                   </Typography>
                 </MenuItem>
@@ -104,13 +104,13 @@ const NavBar = () => {
               {isLoggedIn ? (
                 <>
                   <MenuItem onClick={() => dispatch(logOutUser())}>
-                    <Typography fontWeight={600} textAlign='center'>
+                    <Typography fontWeight={600} textAlign="center">
                       Log Out
                     </Typography>
                   </MenuItem>
-                  <Link to='/create-game'>
+                  <Link to="/create-game">
                     <MenuItem onClick={handleCloseNavMenu}>
-                      <Typography fontWeight={600} textAlign='center'>
+                      <Typography fontWeight={600} textAlign="center">
                         Create Game
                       </Typography>
                     </MenuItem>
@@ -118,16 +118,16 @@ const NavBar = () => {
                 </>
               ) : (
                 <>
-                  <Link to='/login'>
+                  <Link to="/login">
                     <MenuItem onClick={handleCloseNavMenu}>
-                      <Typography fontWeight={600} textAlign='center'>
+                      <Typography fontWeight={600} textAlign="center">
                         Login
                       </Typography>
                     </MenuItem>
                   </Link>
-                  <Link to='/register'>
+                  <Link to="/register">
                     <MenuItem onClick={handleCloseNavMenu}>
-                      <Typography fontWeight={600} textAlign='center'>
+                      <Typography fontWeight={600} textAlign="center">
                         Register
                       </Typography>
                     </MenuItem>
@@ -137,15 +137,15 @@ const NavBar = () => {
             </Menu>
           </Box>
           <Typography
-            variant='h6'
+            variant="h6"
             noWrap
-            component='div'
+            component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
             FutTube
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Link to='/'>
+            <Link to="/">
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{
@@ -160,7 +160,7 @@ const NavBar = () => {
             </Link>
             {isLoggedIn ? (
               <>
-                <Link to='/create-game'>
+                <Link to="/create-game">
                   <Button
                     onClick={handleCloseNavMenu}
                     sx={{
@@ -187,7 +187,7 @@ const NavBar = () => {
               </>
             ) : (
               <>
-                <Link to='/login'>
+                <Link to="/login">
                   <Button
                     onClick={handleCloseNavMenu}
                     sx={{
@@ -200,7 +200,7 @@ const NavBar = () => {
                     Login
                   </Button>
                 </Link>
-                <Link to='/register'>
+                <Link to="/register">
                   <Button
                     onClick={handleCloseNavMenu}
                     sx={{
@@ -219,14 +219,14 @@ const NavBar = () => {
 
           {isLoggedIn && (
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title='Open settings'>
+              <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt='Avatar' src='https://i.pravatar.cc/80' />
+                  <Avatar alt="Avatar" src="https://i.pravatar.cc/80" />
                 </IconButton>
               </Tooltip>
               <Menu
                 sx={{ mt: '45px' }}
-                id='menu-appbar'
+                id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
                   vertical: 'top',
@@ -249,7 +249,7 @@ const NavBar = () => {
                         setting.title === 'Logout' && dispatch(logOutUser());
                       }}
                     >
-                      <Typography textAlign='center'>
+                      <Typography textAlign="center">
                         {setting.title}
                       </Typography>
                     </MenuItem>
