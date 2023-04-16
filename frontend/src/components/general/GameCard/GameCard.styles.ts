@@ -1,5 +1,5 @@
 import tw, { styled } from 'twin.macro';
-import { FontTypes, setTypography } from '../../styles/mixins';
+import { FontTypes, setTypography } from '../../../styles/mixins';
 
 export const Title = styled.h2`
   ${setTypography(FontTypes.Heading3)}
@@ -14,3 +14,7 @@ export const Paragraph = styled.p`
     ${tw`mr-2`}
   }
 `;
+
+export const Wrapper = tw.div`flex flex-col rounded-xl bg-white bg-clip-border`;
+
+export const Content = tw.div`flex-1 p-6`;

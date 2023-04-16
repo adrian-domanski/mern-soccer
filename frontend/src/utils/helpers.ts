@@ -1,18 +1,14 @@
-import {
-  NavbarLinkNames,
-  NavbarLinkRoute,
-  NavbarLinks,
-} from '../constants/enum';
+import { RouteNames, RouteData, Routes } from '../constants/enum';
 
 export const getNavLinks = (isLoggedIn: boolean) =>
-  Object.entries(NavbarLinks)
+  Object.entries(Routes)
     .map(([name, link]) => {
       if (
         (!isLoggedIn && !link.isAuth) ||
-        name === NavbarLinkNames.Home ||
+        name === RouteNames.Home ||
         (isLoggedIn && link.isAuth)
       ) {
         return [name, link];
       }
     })
-    .filter((val) => val) as [NavbarLinkNames, NavbarLinkRoute][];
+    .filter((val) => val) as [RouteNames, RouteData][];

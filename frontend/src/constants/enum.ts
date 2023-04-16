@@ -2,13 +2,13 @@
  * Navbar
  */
 
-export interface NavbarLinkRoute {
+export interface RouteData {
   route: string;
   isAuth: boolean;
   title: string;
 }
 
-export enum NavbarLinkNames {
+export enum RouteNames {
   Home = 'home',
   CreateGame = 'createGame',
   Logout = 'logout',
@@ -16,16 +16,16 @@ export enum NavbarLinkNames {
   Register = 'register',
 }
 
-export const NavbarLinks: Record<NavbarLinkNames, NavbarLinkRoute> = {
-  [NavbarLinkNames.Home]: { title: 'Home', route: '/', isAuth: false },
-  [NavbarLinkNames.CreateGame]: {
+export const Routes: Record<RouteNames, RouteData> = {
+  [RouteNames.Home]: { title: 'Home', route: '/', isAuth: false },
+  [RouteNames.CreateGame]: {
     route: '/create-game',
     isAuth: true,
     title: 'Create Game',
   },
-  [NavbarLinkNames.Logout]: { title: 'Logout', route: '/', isAuth: true },
-  [NavbarLinkNames.Login]: { title: 'Login', route: '/login', isAuth: false },
-  [NavbarLinkNames.Register]: {
+  [RouteNames.Logout]: { title: 'Logout', route: '/', isAuth: true },
+  [RouteNames.Login]: { title: 'Login', route: '/login', isAuth: false },
+  [RouteNames.Register]: {
     title: 'Register',
     route: '/register',
     isAuth: false,

@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../../store/store';
 import { logOutUser } from '../../../features/account/accountSlice';
 import { FaBars } from 'react-icons/fa';
 import { useState } from 'react';
-import { NavbarLinkNames } from '../../../constants/enum';
+import { RouteNames } from '../../../constants/enum';
 
 import * as Styled from './Navbar.styles';
 import 'twin.macro';
@@ -29,7 +29,7 @@ const NavBar = () => {
               <Link to={link.route}>
                 <Styled.NavbarLink
                   onClick={() => {
-                    name === NavbarLinkNames.Logout && dispatch(logOutUser());
+                    name === RouteNames.Logout && dispatch(logOutUser());
                     setIsMobileActive(false);
                   }}
                 >

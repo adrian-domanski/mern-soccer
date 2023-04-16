@@ -1,15 +1,15 @@
-import { Game } from '../../interfaces/Game';
+import { Game } from '../../../interfaces/Game';
 import 'twin.macro';
 import * as Styled from './GameCard.styles';
-import Button, { ButtonVariant } from '../core/Button/Button';
+import Button, { ButtonVariant } from '../../core/Button/Button';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import {
   FaCalendarAlt,
   FaUserFriends,
   FaHashtag,
   FaClock,
 } from 'react-icons/fa';
-import moment from 'moment';
 
 export default function GameCard({
   date,
@@ -20,8 +20,8 @@ export default function GameCard({
   fieldNumber,
 }: Game) {
   return (
-    <div tw="flex flex-col rounded-xl bg-white bg-clip-border">
-      <div tw="flex-1 p-6">
+    <Styled.Wrapper>
+      <Styled.Content>
         <Link to={`/game/${_id}`}>
           <Styled.Title>{name}</Styled.Title>
         </Link>
@@ -43,7 +43,7 @@ export default function GameCard({
             Show Game
           </Button>
         </Link>
-      </div>
-    </div>
+      </Styled.Content>
+    </Styled.Wrapper>
   );
 }
