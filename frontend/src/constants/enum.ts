@@ -41,3 +41,10 @@ export enum SocialLinks {
   LinkedIn = 'https://www.linkedin.com/in/adrian-domanski-dev/',
   Portfolio = 'https://www.kodario.dev/',
 }
+
+/**
+ * Account
+ */
+
+export const emailRegex =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

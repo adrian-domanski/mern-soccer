@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IUser } from '../../interfaces/User';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { ICredentials } from './RegisterPage';
 
 const API_URL = import.meta.env.VITE_SERVER_URL;
 
@@ -28,15 +27,20 @@ export const registerUser = createAsyncThunk<IUser, Object>(
       toast.success('Successfully created user!');
       return response.data;
     } catch (err: any) {
-      toast.error('Error creating user');
-      return rejectWithValue({ error: err.data });
+      const message = err?.response?.data?.error;
+      if (message) {
+        toast.error(message);
+      } else {
+        toast.error('Error creating user');
+      }
+      return rejectWithValue({ error: err });
     }
   }
 );
 
-export const loginUser = createAsyncThunk<IUser, ICredentials>(
+export const loginUser = createAsyncThunk<IUser, Object>(
   'account/login',
-  async (user: ICredentials, thunkAPI) => {
+  async (user, thunkAPI) => {
     try {
       const response = await axios.post(`${API_URL}/api/auth/login`, user);
       const { token } = response.data;
@@ -44,6 +48,7 @@ export const loginUser = createAsyncThunk<IUser, ICredentials>(
       toast.success('Successfully logged in');
       return token;
     } catch (err: any) {
+      toast.error('Invalid credentials!');
       return thunkAPI.rejectWithValue({ error: err.data });
     }
   }

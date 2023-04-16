@@ -7,6 +7,8 @@ export const NavbarContainer = tw.nav`
   relative
 `;
 
+export const LogoIcon = tw.img`w-7 h-7 mr-2`;
+
 export const NavbarContent = tw.div`
   flex 
   max-w-6xl
@@ -15,7 +17,7 @@ export const NavbarContent = tw.div`
 `;
 
 export const Logo = tw.div`
-  font-bold
+  font-bold flex items-center
 `;
 
 export const LogoText = tw.h1`

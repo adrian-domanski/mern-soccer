@@ -5,8 +5,8 @@ import AuthGuard from '../../../guards/AuthGuard';
 import CreateGamePage from '../../../features/games/CreateGamePage';
 import EditGamePage from '../../../features/games/EditGamePage';
 import LoggedInGuard from '../../../guards/LoggedInGuard';
-import RegisterPage from '../../../features/account/RegisterPage';
-import LoginPage from '../../../features/account/LoginPage';
+import RegisterPage from '../../../containers/RegisterPage/RegisterPage';
+import LoginPage from '../../../containers/LoginPage/LoginPage';
 
 const Router = () => {
   return (

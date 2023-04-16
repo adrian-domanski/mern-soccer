@@ -17,11 +17,17 @@ const NavBar = () => {
   return (
     <Styled.NavbarContainer>
       <Styled.NavbarContent>
-        <Styled.Logo>
-          <Link to="/">
+        <Link to="/">
+          <Styled.Logo>
+            <Styled.LogoIcon
+              src="/logo_icon.png"
+              alt="Soocer ball"
+              width={28}
+              height={28}
+            />
             <Styled.LogoText>FutTube</Styled.LogoText>
-          </Link>
-        </Styled.Logo>
+          </Styled.Logo>
+        </Link>
 
         <Styled.NavbarList isMobileOpen={isMobileActive}>
           {getNavLinks(isLoggedIn).map(([name, link]) => (
