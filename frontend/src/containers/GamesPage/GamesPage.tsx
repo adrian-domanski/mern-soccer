@@ -4,7 +4,7 @@ import * as Styled from './GamePage.styles';
 import { Section } from '../../styles/components/Containers';
 import AddGameCard from './AddGameCard/AddGameCard';
 
-export default function GamePage() {
+export default function GamesPage() {
   const { games } = useAppSelector((state) => state.games);
 
   return (

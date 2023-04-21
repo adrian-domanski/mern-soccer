@@ -1,6 +1,6 @@
 import { useAppSelector } from '../store/store';
 import { Outlet, useNavigate } from 'react-router-dom';
-import GamePage from '../containers/GamePage/GamePage';
+import GamesPage from '../containers/GamesPage/GamesPage';
 import { useEffect } from 'react';
 
 const LoggedInGuard = () => {
@@ -11,7 +11,7 @@ const LoggedInGuard = () => {
     isLoggedIn && navigate('/');
   }, [isLoggedIn]);
 
-  return isLoggedIn ? <GamePage /> : <Outlet />;
+  return isLoggedIn ? <GamesPage /> : <Outlet />;
 };
 
 export default LoggedInGuard;

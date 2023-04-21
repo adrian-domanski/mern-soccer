@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <Styled.FooterContainer>
       <Section>
-        <div tw="container px-4 mx-auto">
+        <div tw="container mx-auto">
           <div tw="flex flex-wrap">
             <Styled.FooterColumn>
               <Styled.FooterTitle>FutTube™</Styled.FooterTitle>

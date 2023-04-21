@@ -1,7 +1,9 @@
 import tw, { styled } from 'twin.macro';
 
 export const NavbarContainer = tw.nav`
-  p-4 
+  py-4
+  px-2
+  lg:p-4 
   text-white 
   bg-gray-900
   relative
@@ -11,14 +13,13 @@ export const NavbarContainer = tw.nav`
 export const LogoIcon = tw.img`w-7 h-7 mr-2`;
 
 export const NavbarContent = tw.div`
-  flex 
-  max-w-6xl
+  flex
   items-center 
   mx-auto
 `;
 
 export const Logo = tw.div`
-  font-bold flex items-center
+  font-bold lg:ml-4 flex items-center
 `;
 
 export const LogoText = tw.h1`
