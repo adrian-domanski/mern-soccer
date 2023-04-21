@@ -5,6 +5,7 @@ export const NavbarContainer = tw.nav`
   text-white 
   bg-gray-900
   relative
+  lg:h-[80px]
 `;
 
 export const LogoIcon = tw.img`w-7 h-7 mr-2`;

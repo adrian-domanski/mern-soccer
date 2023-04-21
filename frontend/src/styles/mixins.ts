@@ -8,6 +8,11 @@ export enum FontTypes {
   Heading5 = 'Heading5',
 }
 
+export enum ContainerSizes {
+  Navbar = 80, //px
+  Footer = 300, //px
+}
+
 /**
  * Use this mixin to set typography
  */
@@ -62,4 +67,13 @@ export const setTypography = (category: FontTypes) => {
     default:
       break;
   }
+};
+
+// This sets the height of the content area to 100vh - the height of the header and footer
+export const setContentHeight = () => {
+  return css`
+    min-height: calc(
+      100vh - (${ContainerSizes.Navbar}px + ${ContainerSizes.Footer}px)
+    );
+  `;
 };

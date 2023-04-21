@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../store/store';
 import { toast } from 'react-toastify';
 import { loginUser } from '../../features/account/accountSlice';
 
-import * as Styled from './LoginPage.styled';
+import * as Styled from './LoginPage.styles';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');

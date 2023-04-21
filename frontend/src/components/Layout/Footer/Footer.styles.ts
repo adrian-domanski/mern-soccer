@@ -2,7 +2,7 @@ import tw, { styled } from 'twin.macro';
 import { FontTypes, setTypography } from '../../../styles/mixins';
 
 export const FooterContainer = styled.footer`
-  ${tw`py-8 bg-gray-800`}
+  ${tw`py-8 bg-gray-800 mt-auto lg:h-[300px]`}
 `;
 
 export const FooterColumn = styled.div`

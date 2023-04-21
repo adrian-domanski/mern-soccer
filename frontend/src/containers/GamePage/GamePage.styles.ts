@@ -1,9 +1,13 @@
 import tw, { styled } from 'twin.macro';
-import { FontTypes, setTypography } from '../../styles/mixins';
+import {
+  FontTypes,
+  setContentHeight,
+  setTypography,
+} from '../../styles/mixins';
 
 export const Wrapper = styled.div`
-  ${tw`bg-gray-100 h-full`}
-  min-height: 70vh;
+  ${setContentHeight()};
+  ${tw`bg-gray-100`}
   padding: 2rem 0;
 
   & > section {

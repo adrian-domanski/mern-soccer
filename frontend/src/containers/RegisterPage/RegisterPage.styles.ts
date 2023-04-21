@@ -3,6 +3,7 @@ import { FontTypes, setTypography } from '../../styles/mixins';
 
 export const Container = styled.section`
   background: url('/bg/bg_1.webp') no-repeat center bottom;
+  background-size: cover;
   position: relative;
   z-index: 1;
 
