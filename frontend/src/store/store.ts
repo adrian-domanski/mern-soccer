@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import gameReducer from '../features/games/gameSlice';
-import accountReducer from '../features/account/accountSlice';
+import gameReducer from './games/gameSlice';
+import accountReducer from './account/accountSlice';
 
 export const store = configureStore({
   reducer: {

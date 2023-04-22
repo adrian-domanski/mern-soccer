@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../store/store';
-import { logOutUser } from '../../../features/account/accountSlice';
+import { logOutUser } from '../../../store/account/accountSlice';
 import { FaBars } from 'react-icons/fa';
 import { useState } from 'react';
 import { getNavLinks } from '../../../utils/helpers';

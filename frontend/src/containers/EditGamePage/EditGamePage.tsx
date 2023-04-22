@@ -11,7 +11,7 @@ import {
   deleteGame,
   getGameById,
   updateGame,
-} from '../../features/games/gameSlice';
+} from '../../store/games/gameSlice';
 
 import 'twin.macro';
 import * as Styled from './EditGamePage.styles';

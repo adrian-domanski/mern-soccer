@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import logoImg from '/logo_icon.png';
 import { useAppDispatch } from '../../store/store';
 import { toast } from 'react-toastify';
-import { registerUser } from '../../features/account/accountSlice';
+import { registerUser } from '../../store/account/accountSlice';
 
 import * as Styled from './RegisterPage.styles';
 

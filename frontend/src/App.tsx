@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from './store/store';
 import { useCallback, useEffect } from 'react';
-import { getGames } from './features/games/gameSlice';
+import { getGames } from './store/games/gameSlice';
 import { ToastContainer } from 'react-toastify';
-import { getCurrentUser } from './features/account/accountSlice';
+import { getCurrentUser } from './store/account/accountSlice';
 import Layout from './components/Layout/Layout';
 import Router from './components/Layout/Router/Router';
 import { Datepicker, Input, Timepicker, initTE } from 'tw-elements';

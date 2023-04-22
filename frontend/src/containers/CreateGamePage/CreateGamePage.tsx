@@ -7,7 +7,7 @@ import MyInput from '../../components/core/Input/Input';
 import DatePicker from '../../components/core/DatePicker/DatePicker';
 import TimePicker from '../../components/core/TimePicker/TimePicker';
 import moment from 'moment';
-import { createGame } from '../../features/games/gameSlice';
+import { createGame } from '../../store/games/gameSlice';
 
 import 'twin.macro';
 import * as Styled from './CreateGamePage.styles';

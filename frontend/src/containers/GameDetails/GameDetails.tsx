@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getGameById } from '../../features/games/gameSlice';
+import { getGameById } from '../../store/games/gameSlice';
 import { useAppDispatch, useAppSelector } from '../../store/store';
 import 'twin.macro';
 import { Section } from '../../styles/components/Containers';
