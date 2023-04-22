@@ -33,7 +33,7 @@ const NavBar = () => {
 
           <Styled.NavbarList isMobileOpen={isMobileActive}>
             {getNavLinks(isLoggedIn).map(([name, link]) => (
-              <Styled.NavbarListItem key={link.route}>
+              <Styled.NavbarListItem key={link.title}>
                 <Link to={link.route}>
                   <Styled.NavbarLink
                     onClick={() => {

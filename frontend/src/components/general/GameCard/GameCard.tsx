@@ -1,4 +1,3 @@
-import { Game } from '../../../interfaces/Game';
 import 'twin.macro';
 import * as Styled from './GameCard.styles';
 import Button, { ButtonVariant } from '../../core/Button/Button';
@@ -10,6 +9,7 @@ import {
   FaHashtag,
   FaClock,
 } from 'react-icons/fa';
+import { IGame } from '../../../interfaces/Game';
 
 export default function GameCard({
   date,
@@ -18,7 +18,7 @@ export default function GameCard({
   time,
   _id,
   fieldNumber,
-}: Game) {
+}: IGame) {
   return (
     <Styled.Wrapper>
       <Styled.Content>

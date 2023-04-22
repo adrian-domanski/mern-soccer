@@ -34,6 +34,8 @@ export const Wrapper = styled.button<WrapperProps>`
         return tw`bg-white text-gray-700 hover:bg-gray-100`;
       case ButtonVariant.DARKER:
         return tw`text-gray-200 bg-gray-600 hover:bg-gray-700`;
+      case ButtonVariant.DANGER:
+        return tw`text-white bg-red-600 hover:bg-red-700 border-0`;
 
       default:
         return css``;

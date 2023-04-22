@@ -17,7 +17,7 @@ export const FooterTitle = styled.h2`
   ${tw`mb-4 text-xl font-semibold text-white`}
 `;
 
-export const FooterLink = styled.a`
+export const FooterLink = styled.span`
   ${tw`inline-block mb-2 text-base text-gray-400 hover:text-gray-100`}
 `;
 

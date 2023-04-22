@@ -32,7 +32,7 @@ const Footer = () => {
               <Styled.FooterContent>
                 <Styled.FooterLinkList>
                   {getNavLinks(isLoggedIn).map(([, link]) => (
-                    <Styled.FooterListItem key={link.route}>
+                    <Styled.FooterListItem key={link.title}>
                       <Link to={link.route}>
                         <Styled.FooterLink>{link.title}</Styled.FooterLink>
                       </Link>
@@ -48,6 +48,7 @@ const Footer = () => {
                 <Styled.SocialList>
                   <Styled.SocialListItem>
                     <Styled.FooterLink
+                      as="a"
                       href={SocialLinks.GitHub}
                       target="_blank"
                     >
@@ -58,6 +59,7 @@ const Footer = () => {
                   </Styled.SocialListItem>
                   <Styled.SocialListItem>
                     <Styled.FooterLink
+                      as="a"
                       href={SocialLinks.LinkedIn}
                       target="_blank"
                     >
@@ -68,6 +70,7 @@ const Footer = () => {
                   </Styled.SocialListItem>
                   <Styled.SocialListItem>
                     <Styled.FooterLink
+                      as="a"
                       href={SocialLinks.Portfolio}
                       target="_blank"
                     >

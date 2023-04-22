@@ -1,5 +1,5 @@
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
-import { Game } from '../../interfaces/Game';
+import { IGame } from '../../interfaces/Game';
 import React, { useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -49,7 +49,7 @@ const CreateGamePage = () => {
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const newGame: Game = { ...game, date: game.date.toDate() };
+    const newGame: IGame = { ...game, date: game.date.toDate() };
 
     dispatch(createGame(newGame));
     setGame(initialGame);

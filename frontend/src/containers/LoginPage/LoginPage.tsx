@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { loginUser } from '../../features/account/accountSlice';
 
 import * as Styled from './LoginPage.styles';
+import Input from '../../components/core/Input/Input';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -52,7 +53,9 @@ export default function LoginPage() {
               <form onSubmit={handleSubmit}>
                 <Styled.Text>Please login to your account</Styled.Text>
                 <Styled.InputGroup>
-                  <Styled.Input
+                  <Input
+                    id="email"
+                    label="E-mail"
                     type="email"
                     placeholder="E-mail"
                     value={email}
@@ -62,7 +65,9 @@ export default function LoginPage() {
                 </Styled.InputGroup>
 
                 <Styled.InputGroup>
-                  <Styled.Input
+                  <Input
+                    id="password"
+                    label="Password"
                     type="password"
                     placeholder="Password"
                     value={password}

@@ -1,4 +1,4 @@
-export interface Game {
+export interface IGame {
   _id?: string;
   name: string;
   address: string;

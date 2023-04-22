@@ -32,20 +32,18 @@ export const Logo = tw.img`mx-auto w-10`;
 
 export const Title = styled.h4`
   ${setTypography(FontTypes.Heading3)}
-  ${tw`mb-12 text-center mt-3 text-primaryLight pb-1 text-xl font-semibold`}
+  ${tw`mb-12 text-center mt-3 text-primaryDark pb-1 text-xl font-semibold`}
 `;
 export const Text = tw.p`mb-4`;
 
 export const InputGroup = tw.div`relative mb-4`;
-
-export const Input = tw.input`w-full px-4 p-2 text-neutral-800 border-2 border-transparent rounded-md focus:outline-none focus:border-primaryDark transition-all duration-200`;
 
 export const LoginButtonWrapper = styled.div`
   button {
     width: 100%;
   }
 `;
-export const JoinUs = tw.p`block mt-3 text-primaryLight`;
+export const JoinUs = tw.p`block mt-3 text-primaryDark`;
 
 export const RightContainer = tw.div`flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none`;
 

@@ -13,9 +13,9 @@ interface IButtonProps
 
 export enum ButtonVariant {
   PRIMARY = 'primary',
+  DANGER = 'DANGER',
   SECONDARY = 'secondary',
   DARKER = 'darker',
-  TEXT = 'text',
 }
 
 const Button: FC<IButtonProps> = ({ variant, $as, children, ...props }) => {

@@ -1,11 +1,12 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Game } from '../../interfaces/Game';
+import { IGame } from '../../interfaces/Game';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 interface GameState {
-  games: Game[] | null;
+  games: IGame[] | null;
   loading: boolean;
-  singleGame: Game | null;
+  singleGame: IGame | null;
   errors: any;
 }
 
@@ -19,7 +20,7 @@ const initialState: GameState = {
 const API_URL = import.meta.env.VITE_SERVER_URL;
 
 // actions
-export const getGames = createAsyncThunk<Game[]>(
+export const getGames = createAsyncThunk<IGame[]>(
   'games/getGames',
   async (_, thunkAPI) => {
     try {
@@ -32,7 +33,7 @@ export const getGames = createAsyncThunk<Game[]>(
   }
 );
 
-export const getGameById = createAsyncThunk<Game, string>(
+export const getGameById = createAsyncThunk<IGame, string>(
   'games/getGameById',
   async (id, thunkAPI) => {
     try {
@@ -44,7 +45,7 @@ export const getGameById = createAsyncThunk<Game, string>(
   }
 );
 
-export const createGame = createAsyncThunk<Game, Object>(
+export const createGame = createAsyncThunk<IGame, Object>(
   'games/createGame',
   async (game, thunkAPI) => {
     try {
@@ -57,7 +58,7 @@ export const createGame = createAsyncThunk<Game, Object>(
   }
 );
 
-export const updateGame = createAsyncThunk<Game, Game>(
+export const updateGame = createAsyncThunk<IGame, any>(
   'games/updateGame',
   async (game, thunkAPI) => {
     try {
@@ -66,14 +67,16 @@ export const updateGame = createAsyncThunk<Game, Game>(
         game
       );
       thunkAPI.dispatch(getGames());
+      toast.success('Game updated');
       return response.data;
     } catch (error) {
+      toast.error('Something went wrong');
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
-export const deleteGame = createAsyncThunk<Game, string>(
+export const deleteGame = createAsyncThunk<IGame, string>(
   'games/deleteGame',
   async (id, thunkAPI) => {
     try {
@@ -91,7 +94,7 @@ export const gameSlice = createSlice({
   name: 'games',
   initialState,
   reducers: {
-    setGames: (state, action: PayloadAction<Game[]>) => {
+    setGames: (state, action: PayloadAction<IGame[]>) => {
       state.games = action.payload;
     },
   },
