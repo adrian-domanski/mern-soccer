@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 
-export const Wrapper = tw.div`mt-10 max-w-4xl mx-auto`;
+export const Wrapper = tw.div`mt-10 max-w-4xl mx-auto pb-8`;
 
 export const TableHeader = tw.div`px-4`;
 

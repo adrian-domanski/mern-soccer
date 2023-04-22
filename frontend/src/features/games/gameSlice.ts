@@ -82,8 +82,10 @@ export const deleteGame = createAsyncThunk<IGame, string>(
     try {
       const response = await axios.delete(`${API_URL}/api/games/game/${id}`);
       thunkAPI.dispatch(getGames());
+      toast.success('Game deleted');
       return response.data;
     } catch (error) {
+      toast.error('There was an error when deleting the game!');
       return thunkAPI.rejectWithValue(error);
     }
   }

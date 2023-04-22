@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/store';
 import { useNavigate, useParams } from 'react-router-dom';
 import Button, { ButtonVariant } from '../../components/core/Button/Button';
@@ -7,16 +7,13 @@ import MyInput from '../../components/core/Input/Input';
 import DatePicker from '../../components/core/DatePicker/DatePicker';
 import TimePicker from '../../components/core/TimePicker/TimePicker';
 import moment from 'moment';
-import {
-  deleteGame,
-  getGameById,
-  updateGame,
-} from '../../features/games/gameSlice';
+import { createGame } from '../../features/games/gameSlice';
 
 import 'twin.macro';
-import * as Styled from './EditGamePage.styles';
+import * as Styled from './CreateGamePage.styles';
+import { toast } from 'react-toastify';
 
-const EditGamePage = () => {
+const CreateGamePage = () => {
   const { singleGame } = useAppSelector((state) => state.games);
 
   const dispatch = useAppDispatch();
@@ -31,11 +28,6 @@ const EditGamePage = () => {
 
   const { id } = useParams();
   const navigate = useNavigate();
-
-  // Set singleGame to state
-  useEffect(() => {
-    if (id && !singleGame) dispatch(getGameById(id));
-  }, [id, singleGame]);
 
   const handleChange = (
     inputType: 'text' | 'number' | 'date' | 'time',
@@ -64,8 +56,57 @@ const EditGamePage = () => {
     }
   };
 
-  const handleEdit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const validateFields = () => {
+    let isValid = true;
+
+    // Check if name is not empty
+    if (!game.name) {
+      isValid = false;
+      console.log('Name field is required.');
+    }
+
+    // Check if address is not empty
+    if (!game.address) {
+      isValid = false;
+      console.log('Address field is required.');
+    }
+
+    // Check if fieldNumber is not empty
+    if (!game.fieldNumber) {
+      isValid = false;
+      console.log('Field Number field is required!');
+    }
+
+    // Check if numberOfPeople is not empty
+    if (!game.numberOfPeople) {
+      isValid = false;
+      console.log('Number of People field is required.');
+    }
+
+    // Check if time is not empty and is a valid time format
+    if (!game.time) {
+      isValid = false;
+      console.log('Time field is required');
+    }
+
+    // Check if date is not empty and is a valid date format
+    if (!game.date || !moment(game.date, 'DD/MM/YYYY', true).isValid()) {
+      isValid = false;
+      console.log('Date field is required and must be in DD/MM/YYYY format.');
+    }
+
+    return isValid;
+  };
+
+  const handleCreateGame = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    // Validate fields before creating game
+    if (!validateFields())
+      return toast.error(
+        'Game creation failed. Please fill in all required fields correctly.'
+      );
+
     const newGame = {
       ...singleGame,
       ...(game.name && { name: game.name }),
@@ -77,24 +118,17 @@ const EditGamePage = () => {
       _id: id,
     };
 
-    await dispatch(updateGame(newGame));
-    navigate(`/game/${id}`);
-  };
-
-  const handleDeleteGame = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (!id) return alert('Invalid game id');
-    dispatch(deleteGame(id));
-    navigate('/');
+    await dispatch(createGame(newGame));
+    navigate(`/`);
   };
 
   return (
     <Section>
       <Styled.Wrapper>
         <Styled.TableHeader>
-          <Styled.HeaderTitle>Edit Game</Styled.HeaderTitle>
+          <Styled.HeaderTitle>Create Game</Styled.HeaderTitle>
           <Styled.HeaderSubtitle>
-            Update details about this game
+            Add new game to the list
           </Styled.HeaderSubtitle>
         </Styled.TableHeader>
 
@@ -106,7 +140,7 @@ const EditGamePage = () => {
                 <MyInput
                   id="name"
                   value={game?.name}
-                  label={singleGame?.name || ''}
+                  label={'Name of your game'}
                   onChange={(e) => handleChange('text', e)}
                   name="name"
                 />
@@ -117,7 +151,7 @@ const EditGamePage = () => {
               <Styled.Dd>
                 <MyInput
                   id="address"
-                  label={singleGame?.address || ''}
+                  label={'Address'}
                   value={game?.address}
                   onChange={(e) => handleChange('text', e)}
                   name="address"
@@ -138,7 +172,7 @@ const EditGamePage = () => {
                       moment(date).format('DD/MM/YYYY')
                     )
                   }
-                  placeholder={moment(singleGame?.date).format('DD/MM/YYYY')}
+                  placeholder={'Click here to select date'}
                 />
               </Styled.Dd>
             </Styled.ListElement>
@@ -161,7 +195,7 @@ const EditGamePage = () => {
                 <MyInput
                   id="numberOfPeople"
                   value={game?.numberOfPeople}
-                  label={String(singleGame?.numberOfPeople) || '0'}
+                  label={'1'}
                   onChange={(e) => handleChange('number', e)}
                   type="number"
                   name="numberOfPeople"
@@ -174,7 +208,7 @@ const EditGamePage = () => {
                 <MyInput
                   id="fieldNumber"
                   value={game?.fieldNumber}
-                  label={String(singleGame?.fieldNumber) || '0'}
+                  label={'432'}
                   onChange={(e) => handleChange('number', e)}
                   type="number"
                   name="fieldNumber"
@@ -182,18 +216,13 @@ const EditGamePage = () => {
               </Styled.Dd>
             </Styled.ListElement>
             <Styled.ListElement>
-              <Styled.Dt>
-                <span>Edit Game</span>
-              </Styled.Dt>
+              <Styled.Dt></Styled.Dt>
               <Styled.Dd tw="space-x-2">
                 <Button
-                  variant={ButtonVariant.DANGER}
-                  onClick={handleDeleteGame}
+                  variant={ButtonVariant.DARKER}
+                  onClick={handleCreateGame}
                 >
-                  Delete Game
-                </Button>
-                <Button variant={ButtonVariant.DARKER} onClick={handleEdit}>
-                  Save edits
+                  Create Game
                 </Button>
               </Styled.Dd>
             </Styled.ListElement>
@@ -204,4 +233,4 @@ const EditGamePage = () => {
   );
 };
 
-export default EditGamePage;
+export default CreateGamePage;

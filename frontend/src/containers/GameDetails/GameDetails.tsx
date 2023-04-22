@@ -6,6 +6,7 @@ import 'twin.macro';
 import { Section } from '../../styles/components/Containers';
 import Button, { ButtonVariant } from '../../components/core/Button/Button';
 import * as Styled from './GameDetails.styles';
+import moment from 'moment';
 
 export default function SingleGamePage() {
   const dispatch = useAppDispatch();
@@ -44,14 +45,20 @@ export default function SingleGamePage() {
             </Styled.ListElement>
 
             <Styled.ListElement>
-              <Styled.Dt>Date and Time</Styled.Dt>
+              <Styled.Dt>Date</Styled.Dt>
               <Styled.Dd>
-                {`${singleGame?.time ? singleGame?.time + ',' : ''} ${
-                  singleGame?.date
-                    ? new Date(singleGame.date).toLocaleDateString()
-                    : ''
-                }`}
+                {moment(singleGame?.date).format('MMMM Do YYYY')}
               </Styled.Dd>
+            </Styled.ListElement>
+
+            <Styled.ListElement>
+              <Styled.Dt>Time</Styled.Dt>
+              <Styled.Dd>{singleGame?.time}</Styled.Dd>
+            </Styled.ListElement>
+
+            <Styled.ListElement>
+              <Styled.Dt>Field Number</Styled.Dt>
+              <Styled.Dd>{singleGame?.fieldNumber}</Styled.Dd>
             </Styled.ListElement>
 
             <Styled.ListElement>

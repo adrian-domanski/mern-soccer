@@ -35,7 +35,6 @@ const TimePicker: FC<ITimePicker> = ({
 
   useEffect(() => {
     const eventHandler = (e: any) => {
-      console.log(e);
       const selectedTime = e?.srcElement?.value;
       handleChange(selectedTime);
     };
