@@ -19,8 +19,11 @@ export const registerUser = async (req: Request, res: Response) => {
     user.password = bcrypt.hashSync(password, salt);
     user.created_at = new Date();
     user.updated_at = new Date();
+
     await user.save();
-    res.status(201).json({ message: 'User created' });
+    const token = await generateJwt(user._id, user.email);
+
+    res.status(201).json({ user, token });
   } catch (error) {
     res.status(500).json({ error });
   }

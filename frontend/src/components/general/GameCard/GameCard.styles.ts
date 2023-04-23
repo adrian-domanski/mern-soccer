@@ -18,3 +18,11 @@ export const Paragraph = styled.p`
 export const Wrapper = tw.div`flex flex-col rounded-xl bg-white bg-clip-border`;
 
 export const Content = tw.div`flex-1 p-6`;
+
+export const ButtonWrapper = styled.div`
+  button {
+    width: 100%;
+
+    ${tw`lg:w-fit`}
+  }
+`;

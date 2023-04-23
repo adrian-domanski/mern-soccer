@@ -17,6 +17,8 @@ export const Paragraph = styled.p`
 
 export const Wrapper = styled.div<{ isLoggedIn: boolean }>`
   height: 100%;
+  min-height: 240px;
+
   ${({ isLoggedIn }) =>
     isLoggedIn &&
     css`

@@ -57,6 +57,7 @@ export default function LoginPage() {
                     id="email"
                     label="E-mail"
                     type="email"
+                    autoComplete="email"
                     placeholder="E-mail"
                     value={email}
                     name="email"
@@ -67,6 +68,7 @@ export default function LoginPage() {
                 <Styled.InputGroup>
                   <Input
                     id="password"
+                    autoComplete="current-password"
                     label="Password"
                     type="password"
                     placeholder="Password"

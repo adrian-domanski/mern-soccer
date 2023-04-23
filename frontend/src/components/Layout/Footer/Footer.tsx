@@ -3,15 +3,17 @@ import { AiFillGithub } from 'react-icons/ai';
 import { RiGlobalFill } from 'react-icons/ri';
 import { Section } from '../../../styles/components/Containers';
 import { getNavLinks } from '../../../utils/helpers';
-import { useAppSelector } from '../../../store/store';
+import { useAppDispatch, useAppSelector } from '../../../store/store';
 import { Link } from 'react-router-dom';
-import { SocialLinks } from '../../../constants/enum';
+import { Routes, SocialLinks } from '../../../constants/enum';
 
 import * as Styled from './Footer.styles';
 import 'twin.macro';
+import { logOutUser } from '../../../store/account/accountSlice';
 
 const Footer = () => {
   const { isLoggedIn } = useAppSelector((state) => state.account);
+  const dispatch = useAppDispatch();
 
   return (
     <Styled.FooterContainer>
@@ -33,7 +35,13 @@ const Footer = () => {
                 <Styled.FooterLinkList>
                   {getNavLinks(isLoggedIn).map(([, link]) => (
                     <Styled.FooterListItem key={link.title}>
-                      <Link to={link.route}>
+                      <Link
+                        to={link.route}
+                        onClick={() =>
+                          Routes.logout.title === link.title &&
+                          dispatch(logOutUser())
+                        }
+                      >
                         <Styled.FooterLink>{link.title}</Styled.FooterLink>
                       </Link>
                     </Styled.FooterListItem>

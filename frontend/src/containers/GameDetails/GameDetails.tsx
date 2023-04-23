@@ -75,19 +75,21 @@ export default function SingleGamePage() {
                 )}
               </Styled.Dt>
               <Styled.Dd>
-                {isLoggedIn ? (
-                  <Link to={`/edit-game/${singleGame?._id}`}>
-                    <Button variant={ButtonVariant.DARKER}>
-                      Edit this Game
-                    </Button>
-                  </Link>
-                ) : (
-                  <Link to={`/login`}>
-                    <Button variant={ButtonVariant.SECONDARY}>
-                      Login to edit
-                    </Button>
-                  </Link>
-                )}
+                <Styled.CTAWrapper>
+                  {isLoggedIn ? (
+                    <Link to={`/edit-game/${singleGame?._id}`}>
+                      <Button variant={ButtonVariant.DARKER}>
+                        Edit this Game
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Link to={`/login`}>
+                      <Button variant={ButtonVariant.SECONDARY}>
+                        Login to edit
+                      </Button>
+                    </Link>
+                  )}
+                </Styled.CTAWrapper>
               </Styled.Dd>
             </Styled.ListElement>
           </Styled.Dl>

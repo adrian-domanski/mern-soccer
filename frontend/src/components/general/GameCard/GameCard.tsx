@@ -39,9 +39,11 @@ export default function GameCard({
           <FaHashtag /> Field no. {fieldNumber}
         </Styled.Paragraph>
         <Link to={`/game/${_id}`}>
-          <Button as="a" variant={ButtonVariant.DARKER}>
-            Show Game
-          </Button>
+          <Styled.ButtonWrapper>
+            <Button as="a" variant={ButtonVariant.DARKER}>
+              Show Game
+            </Button>
+          </Styled.ButtonWrapper>
         </Link>
       </Styled.Content>
     </Styled.Wrapper>

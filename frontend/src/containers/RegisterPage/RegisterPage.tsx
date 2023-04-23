@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { registerUser } from '../../store/account/accountSlice';
 
 import * as Styled from './RegisterPage.styles';
+import Input from '../../components/core/Input/Input';
 
 export default function LoginPage() {
   const [user, setUser] = useState({
@@ -73,8 +74,11 @@ export default function LoginPage() {
               <form onSubmit={handleSubmit}>
                 <Styled.Text>Create new Account</Styled.Text>
                 <Styled.InputGroup>
-                  <Styled.Input
+                  <Input
+                    id="username-input"
+                    label="Username"
                     type="text"
+                    autoComplete="username"
                     placeholder="Username"
                     value={user.username}
                     name="username"
@@ -82,8 +86,11 @@ export default function LoginPage() {
                   />
                 </Styled.InputGroup>
                 <Styled.InputGroup>
-                  <Styled.Input
+                  <Input
+                    id="email-input"
+                    label="E-mail"
                     type="email"
+                    autoComplete="email"
                     placeholder="E-mail"
                     value={user.email}
                     name="email"
@@ -92,8 +99,11 @@ export default function LoginPage() {
                 </Styled.InputGroup>
 
                 <Styled.InputGroup>
-                  <Styled.Input
+                  <Input
+                    id="password-input"
+                    label="Password"
                     type="password"
+                    autoComplete="current-password"
                     placeholder="Password"
                     value={user.password}
                     name="password"

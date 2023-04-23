@@ -1,4 +1,4 @@
-import tw from 'twin.macro';
+import tw, { styled } from 'twin.macro';
 
 export const Wrapper = tw.div`mt-10 max-w-4xl mx-auto pb-8`;
 
@@ -17,3 +17,11 @@ export const ListElement = tw.div`px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 odd:
 export const Dt = tw.dt`text-sm font-medium leading-6 text-gray-900 sm:mt-px sm:pt-2`;
 
 export const Dd = tw.dt`mt-1 text-sm leading-6 text-gray-700 sm:col-span-2`;
+
+export const CTAWrapper = styled.div`
+  ${tw`flex flex-row space-x-2 mt-6 justify-center items-center lg:(block space-x-2 mt-0)`}
+
+  button {
+    ${tw`w-full lg:w-fit`}
+  }
+`;

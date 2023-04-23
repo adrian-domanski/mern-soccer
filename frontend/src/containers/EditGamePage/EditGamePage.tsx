@@ -186,15 +186,17 @@ const EditGamePage = () => {
                 <span>Edit Game</span>
               </Styled.Dt>
               <Styled.Dd tw="space-x-2">
-                <Button
-                  variant={ButtonVariant.DANGER}
-                  onClick={handleDeleteGame}
-                >
-                  Delete Game
-                </Button>
-                <Button variant={ButtonVariant.DARKER} onClick={handleEdit}>
-                  Save edits
-                </Button>
+                <Styled.CTAWrapper>
+                  <Button
+                    variant={ButtonVariant.DANGER}
+                    onClick={handleDeleteGame}
+                  >
+                    Delete Game
+                  </Button>
+                  <Button variant={ButtonVariant.DARKER} onClick={handleEdit}>
+                    Save edits
+                  </Button>
+                </Styled.CTAWrapper>
               </Styled.Dd>
             </Styled.ListElement>
           </Styled.Dl>

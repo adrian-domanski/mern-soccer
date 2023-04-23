@@ -19,11 +19,17 @@ const initialState: IAccountState = {
   errors: [],
 };
 
+export const saveTokenInLocalStorage = (token: string) => {
+  localStorage.setItem('jwt_soccer', JSON.stringify(token));
+};
+
 export const registerUser = createAsyncThunk<IUser, Object>(
   'account/register',
   async (user: Object, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${API_URL}/api/auth/register`, user);
+      const { token } = response.data;
+      saveTokenInLocalStorage(token);
       toast.success('Successfully created user!');
       return response.data;
     } catch (err: any) {
@@ -44,7 +50,7 @@ export const loginUser = createAsyncThunk<IUser, Object>(
     try {
       const response = await axios.post(`${API_URL}/api/auth/login`, user);
       const { token } = response.data;
-      localStorage.setItem('jwt_soccer', JSON.stringify(token));
+      saveTokenInLocalStorage(token);
       toast.success('Successfully logged in');
       return token;
     } catch (err: any) {
@@ -89,7 +95,6 @@ export const getCurrentUser = createAsyncThunk(
         }
       } else {
         thunkAPI.dispatch(setLoggedIn(false));
-        return console.error('getCurrentUser: No token found');
       }
     } catch (err: any) {
       return thunkAPI.rejectWithValue({ error: err.data });
