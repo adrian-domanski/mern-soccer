@@ -50,7 +50,7 @@ git clone https://github.com/adrian-domanski/mern-soccer.git
 ```bash
 npm run build
 ```
-(Notice: this will also build frontend for the production)
+(Notice: this will also build frontend and backend for production)
 
 ### Usage
 1. Run application in development mode:
