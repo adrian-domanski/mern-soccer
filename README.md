@@ -51,7 +51,7 @@ npm run build
 ```
 (Notice: this will also build frontend and backend for production)
 
-### Usage
+### Usage 👀
 1. Run application in development mode:
 
 ```bash
@@ -66,6 +66,6 @@ npm run start
 ```
 To use the application, navigate to http://localhost:3001 in your web browser. (Frontend is served by Node.js server)
 
-### License
+### License 🪪
 
 This project is licensed under the terms of the MIT license.
