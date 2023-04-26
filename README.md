@@ -69,3 +69,7 @@ To use the application, navigate to http://localhost:3001 in your web browser. (
 ### License 🪪
 
 This project is licensed under the terms of the MIT license.
+
+### [Live Demo] 🎉
+
+## 👉 Open [soccer.kodario.dev](https://soccer.kodario.dev/) to view it in the browser.
