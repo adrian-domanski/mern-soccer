@@ -6,7 +6,6 @@
 - [Technologies](#technologies)
 - [Installation and Setup](#installation-and-setup)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Description ℹ️
