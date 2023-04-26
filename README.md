@@ -1,63 +1,72 @@
-# MERN Soccer
-
-This is a MERN stack web application for managing soccer teams and players.
+# MERN Soccer ⚽️
 
 ## Table of Contents
 
-- [About](#about)
-- [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
+- [Description](#description)
+- [Technologies](#technologies)
+- [Installation and Setup](#installation-and-setup)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
-## About
+## Description ℹ️
 
-This project is a simple web application built using the MERN stack (MongoDB, Express, React, Node.js). It allows users to manage soccer teams and players, add new teams and players, and edit or delete existing ones.
+MERN Soccer is a web application built using the MERN stack that allows users to create and manage soccer tournaments.
 
-## Getting Started
+## Technologies 👨‍💻
 
-To get a local copy of this project up and running, follow these simple steps.
+The following technologies were used to build this project:
 
-### Prerequisites
+- **MongoDB** - database
+- **Express.js** - server
+- **React.js** - frontend
+- **Node.js** - backend
+- **TypeScript** - programming language
+- **Mongoose** - object data modeling (ODM) library
+- **React Router** - routing library for React.js
+- **Redux Toolkit** - state management library for React.js
+- **Axios** - promise-based HTTP client for the browser and Node.js
+- **Moment.js** - lightweight library for date and time parsing and formatting
+- **React Toastify** - notification library for React.js
+- **Styled Components** - CSS-in-JS library
+- **Tailwind CSS** - utility-first CSS framework
+- **Twin.macro** - twin-style library for Tailwind CSS
+- **PostCSS** - CSS preprocessor
+- **ESLint** - code linter
+- **Prettier** - code formatter
+- **Husky** - Git hooks library
+- **Concurrently** - command line tool to run multiple commands concurrently
 
-This project requires the following software to be installed on your system:
+## Installation and Setup 🛠️
 
-- Node.js
-- MongoDB
-
-### Installation
+To install and set up the project, follow these steps:
 
 1. Clone the repository:
 
+```bash
 git clone https://github.com/adrian-domanski/mern-soccer.git
-
-
-2. Navigate to the project root directory and install the required dependencies:
-cd mern-soccer
+```
+2. Install the dependencies for the frontend and backend (in the root - /)
+```bash
 npm run build
-
+```
+(Notice: this will also build frontend for the production)
 
 ### Usage
+1. Run application in development mode:
 
-To start the application in development mode, run:
+```bash
 npm run dev
-This will start both the frontend and backend servers concurrently.
-To start the application in production mode, run:
-npm start
+```
+To use the application, navigate to http://localhost:3000 in your web browser.
 
-This will start the backend server only.
+2. Run application in production mode (after npm run build)
 
-### Contributing
-
-Contributions are welcome! Feel free to open a pull request or an issue if you find a bug or have a suggestion for a new feature.
+```bash
+npm run start
+```
+To use the application, navigate to http://localhost:3001 in your web browser. (Frontend is served by Node.js server)
 
 ### License
 
-This project is licensed under the ISC License - see the [LICENSE.md](LICENSE.md) file for details.
-
-
-
-
-
+This project is licensed under the terms of the MIT license.
