@@ -75,5 +75,5 @@ This project is licensed under the terms of the MIT license.
 ## 👉 Open [soccer.kodario.dev](https://soccer.kodario.dev/) to view it in the browser.
 
 ### Example credentials:
-**email**: example@gmail.com
+**email**: example@gmail.com  
 **password**: 123456
