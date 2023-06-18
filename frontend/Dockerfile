@@ -22,16 +22,15 @@ RUN npm run build
 
 FROM nginx:stable-alpine
 
-RUN rm /etc/nginx/conf.d/*
-
-COPY ./nginx.conf /etc/nginx/conf.d/
-
 # Copy the built application from the previous stage (here it's called build)
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Give read access to nginx user
 RUN chmod -R 755 /usr/share/nginx/html
 
+RUN rm /etc/nginx/conf.d/*
+
+COPY ./nginx.conf /etc/nginx/conf.d/
 
 # Expose port 80
 EXPOSE 80

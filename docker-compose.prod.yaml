@@ -11,6 +11,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
       - ./data:/data/db
+    networks:
+      - app-network
 
   nginx:
     image: adomanski/mern-soccer:nginx-latest
@@ -22,6 +24,8 @@ services:
       - mongo
     environment:
       - VITE_SERVER_URL=${VITE_SERVER_URL}
+    networks:
+      - app-network
 
   server:
     image: adomanski/mern-soccer:server-latest
@@ -34,3 +38,9 @@ services:
       - MONGODB_URL=${MONGODB_URL}
       - JWT_SECRET=${JWT_SECRET}
       - PORT=${PORT}
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
