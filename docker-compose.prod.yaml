@@ -13,9 +13,7 @@ services:
       - ./data:/data/db
 
   nginx:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: adomanski/mern-soccer:nginx-latest
     restart: always
     ports:
       - '80:80'
@@ -26,14 +24,12 @@ services:
       - VITE_SERVER_URL=${VITE_SERVER_URL}
 
   server:
+    image: adomanski/mern-soccer:server-latest
     restart: always
     depends_on:
       - mongo
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    ports:
-      - '3001:3001'
+    # ports:
+    #   - '3001:3001'
     environment:
       - MONGODB_URL=${MONGODB_URL}
       - JWT_SECRET=${JWT_SECRET}
