@@ -22,8 +22,8 @@ services:
     depends_on:
       - server
       - mongo
-    # env_file: (Env variables passed from Github Actions)
-    #   - ./frontend/.env
+    environment:
+      - VITE_SERVER_URL=${VITE_SERVER_URL}
 
   server:
     restart: always
@@ -34,5 +34,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - '3001:3001'
-    # env_file: (Env variables passed from Github Actions)
-    #   - ./backend/.env
+    environment:
+      - MONGODB_URL=${MONGODB_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - PORT=${PORT}
