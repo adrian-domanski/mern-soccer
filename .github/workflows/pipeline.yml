@@ -88,3 +88,4 @@ jobs:
           region: ${{ secrets.EB_REGION }}
           version_label: 'version-${{ github.run_number }}'
           deployment_package: docker-compose.prod.yaml
+          use_existing_version_if_available: true
