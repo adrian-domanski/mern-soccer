@@ -28,8 +28,8 @@ services:
     restart: always
     depends_on:
       - mongo
-    # ports:
-    #   - '3001:3001'
+    ports:
+      - '3001:3001'
     environment:
       - MONGODB_URL=${MONGODB_URL}
       - JWT_SECRET=${JWT_SECRET}
